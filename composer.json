@@ -1,0 +1,56 @@
+{
+    "name": "201created/ddd-generator-bundle",
+    "type": "symfony-bundle",
+    "description": "Code generator for common Domain Driven Design patterns in the 201Created DDD framework.",
+    "keywords": [
+        "ddd",
+        "domain driven design",
+        "code generation"
+    ],
+    "version": "1.0",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Pascal Gläßer",
+            "email": "pascal.glaesser1997@gmail.com",
+            "homepage": "https://glassp.dev"
+        }
+    ],
+    "require": {
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "php": ">=7.4",
+        "201created/ddd": "0.1.14",
+        "roave/security-advisories": "dev-master",
+        "symfony/config": "^5.1",
+        "symfony/console": "^5.1",
+        "symfony/dependency-injection": "^5.1",
+        "symfony/filesystem": "^5.1",
+        "symfony/finder": "^5.1",
+        "symfony/maker-bundle": "^1.21",
+        "symfony/phpunit-bridge": "^5.1",
+        "symfony/yaml": "^5.1"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "C201\\DddGeneratorBundle\\": "src/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "/Users/passcalglasser/Desktop/201created/ddd"
+        },
+        {
+            "type": "path",
+            "url": "/Users/passcalglasser/Desktop/201created/collections"
+        }
+    ],
+    "scripts": {
+        "auto-scripts": {}
+    }
+}

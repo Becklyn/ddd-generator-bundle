@@ -1,0 +1,110 @@
+version: 2
+
+jobs:
+    php:
+        docker:
+            -   image: becklyn/circleci-php7.4:latest
+
+        steps:
+            - checkout
+
+            # Download and cache dependencies
+            -   restore_cache:
+                    keys:
+                        - composer-dependencies-{{ checksum "composer.json" }}
+                        # fallback to using the latest cache if no exact match is found
+                        - composer-dependencies-
+
+            -   run:
+                    name: Composer Install
+                    command: composer install --no-interaction --prefer-dist --no-progress --no-suggest
+            -   run:
+                    name: Install Composer Normalize
+                    command: composer global require ergebnis/composer-normalize bamarni/composer-bin-plugin --no-interaction --prefer-dist --no-progress --no-suggest --no-suggest
+            -   run:
+                    name: Composer Bin Install
+                    command: composer bin all install --no-interaction --prefer-dist --no-progress --no-suggest
+
+            # save cache
+            -   save_cache:
+                    paths:
+                        - ./vendor
+                    key: composer-dependencies-{{ checksum "composer.json" }}
+
+
+            # RUN
+            -   run:
+                    name: Composer Normalize
+                    command: composer normalize --indent-size 4 --indent-style space --dry-run
+            -   run:
+                    name: PHP CS Fixer
+                    command: php vendor/bin/php-cs-fixer fix --diff --config vendor-bin/test/vendor/becklyn/php-cs/.php_cs.dist --dry-run --no-interaction
+            -   run:
+                    name: PHPUnit
+                    command: ./vendor/bin/simple-phpunit -c phpunit.xml --colors=always --testdox
+            # phpstan (needs to run after simple-phpunit, as it needs the installed phpunit)
+            -   run:
+                    name: PhpStan
+                    command: php vendor/bin/phpstan analyse --memory-limit 4G --ansi -c vendor-bin/test/vendor/becklyn/php-cs/phpstan/symfony.neon . --no-interaction --no-progress
+            -   run:
+                    name: Lint Twig
+                    command: php bin/console lint:twig templates
+            -   run:
+                    name: Lint Translations
+                    command: php bin/console lint:yaml translations
+            -   run:
+                    name: Lint Config
+                    command: php bin/console lint:yaml config --parse-tags
+
+    node:
+        docker:
+            -   image: circleci/node:10-browsers
+
+        steps:
+            - checkout
+
+            # prepare NPM token
+            -   run:
+                    name: Prepare NPM config
+                    command: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+
+            # Download and cache dependencies
+            -   restore_cache:
+                    keys:
+                        - npm-dependencies-{{ checksum "package.json" }}
+                        # fallback to using the latest cache if no exact match is found
+                        - npm-dependencies-
+
+            -   run: npm install
+
+            # save cache
+            -   save_cache:
+                    paths:
+                        - ./node_modules
+                    key: npm-dependencies-{{ checksum "package.json" }}
+
+
+            # RUN
+            -   run:
+                    name: Kaba Analyze
+                    command: ./node_modules/.bin/kaba analyze
+            -   run:
+                    name: npm test
+                    command: npm test
+            -   run:
+                    name: npm audit
+                    command: npm audit --production
+            -   run:
+                    name: Prettier package.json
+                    command: npx prettier-package-json package.json --list-different --tab-width 4
+
+
+
+workflows:
+    version: 2
+    all:
+        jobs:
+            -   php:
+                    context: Private Package Managers
+            -   node:
+                    context: Private Package Managers
