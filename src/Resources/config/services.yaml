@@ -1,9 +1,0 @@
-services:
-    _defaults:
-        autowire: true
-        autoconfigure: false
-
-    C201\DddGeneratorBundle\:
-        resource: '../../*'
-        exclude: '../../{DependencyInjection, Resources}'
-
