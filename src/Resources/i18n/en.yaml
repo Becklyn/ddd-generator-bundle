@@ -1,0 +1,38 @@
+# Keywords that have a value that starts with lower case chars should start with _
+# example:
+# _generate: generate
+# generate: Generate
+
+_generate: create
+
+generated: Created
+not_found: NotFound
+
+test:
+    _actual: returned
+    _expected: expected
+    _get: get
+    _if: if
+    _then: then
+
+    by_id: ById
+    can_be_found_by_id: CanBeFoundById
+    cannot_be_found_by_id: CannotBeFoundById
+    did_find: DidFind
+    expect: Expect
+    raises_event: RaisesEvent
+    from: From
+    for_given: ForGiven
+    generate: Creates
+    if: If
+    in: In
+    instead_of: InsteadOf
+    is_generated_with_correct_values: IsGeneratedWithCorrectValues
+    matches: Matches
+    persists: Persists
+    removes: Removes
+    returns: Returns
+    returns_null: ReturnsNull
+    should: Should
+    throws: Throws
+    was_executed: WasExecuted

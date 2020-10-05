@@ -20,3 +20,68 @@ services:
         arguments:
           ['@kernel']
 
+    C201\DddGeneratorBundle\Maker\MultiClass\MakeAggregateRoot:
+        tags:
+            - maker.command
+        arguments:
+          ['@kernel']
+
+    C201\DddGeneratorBundle\Maker\Entity\MakeEntity:
+        tags:
+            - maker.command
+        arguments:
+          ['@kernel']
+
+    C201\DddGeneratorBundle\Maker\Entity\MakeEntityDoctrineRepository:
+        tags:
+            - maker.command
+        arguments:
+          ['@kernel']
+
+    C201\DddGeneratorBundle\Maker\Entity\MakeEntityDoctrineRepositoryTest:
+        tags:
+            - maker.command
+        arguments:
+          ['@kernel']
+
+    C201\DddGeneratorBundle\Maker\Entity\MakeEntityEvent:
+        tags:
+            - maker.command
+        arguments:
+          ['@kernel']
+
+    C201\DddGeneratorBundle\Maker\Entity\MakeEntityGeneratedEvent:
+        tags:
+            - maker.command
+        arguments:
+          ['@kernel']
+
+    C201\DddGeneratorBundle\Maker\Entity\MakeEntityId:
+        tags:
+            - maker.command
+        arguments:
+          ['@kernel']
+
+    C201\DddGeneratorBundle\Maker\Entity\MakeEntityNotFoundException:
+        tags:
+            - maker.command
+        arguments:
+          ['@kernel']
+
+    C201\DddGeneratorBundle\Maker\Entity\MakeEntityRepository:
+        tags:
+            - maker.command
+        arguments:
+          ['@kernel']
+
+    C201\DddGeneratorBundle\Maker\Entity\MakeEntityTest:
+        tags:
+            - maker.command
+        arguments:
+          ['@kernel']
+
+    C201\DddGeneratorBundle\Maker\Entity\MakeEntityTestTrait:
+        tags:
+            - maker.command
+        arguments:
+          ['@kernel']

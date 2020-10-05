@@ -22,6 +22,8 @@
     "require-dev": {
         "php": ">=7.4",
         "201created/ddd": "0.1.14",
+        "gedmo/doctrine-extensions": "^3.0",
+        "phpspec/prophecy": "^1.12",
         "roave/security-advisories": "dev-master",
         "symfony/config": "^5.1",
         "symfony/console": "^5.1",
