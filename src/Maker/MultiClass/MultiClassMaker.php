@@ -2,6 +2,7 @@
 
 namespace C201\DddGeneratorBundle\Maker\MultiClass;
 
+use C201\DddGeneratorBundle\Helper\GitUserInfoFetcher;
 use C201\DddGeneratorBundle\Maker\DddEntityMaker;
 use C201\DddGeneratorBundle\Maker\MakeDomain;
 use Symfony\Bundle\MakerBundle\ConsoleStyle;
@@ -18,14 +19,7 @@ abstract class MultiClassMaker extends DddEntityMaker
 
         if (!$this->isDomainConfigured($domain))
         {
-            try
-            {
-                (new MakeDomain($this->kernel))->generate($input, $io, $generator);
-            }
-            catch (\Exception $e)
-            {
-                // MakeDomain does not throw Exceptions.
-            }
+            (new MakeDomain($this->kernel, new GitUserInfoFetcher()))->generate($input, $io, $generator);
         }
 
         foreach ($this->getMakers() as $maker)

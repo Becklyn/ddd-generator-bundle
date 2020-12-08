@@ -10,6 +10,7 @@ use Symfony\Bundle\MakerBundle\InputConfiguration;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\String\UnicodeString;
 
 /**
@@ -24,11 +25,18 @@ use Symfony\Component\String\UnicodeString;
 abstract class DddEntityMaker extends DddMaker
 {
     protected string $layer = "Domain";
+    private GitUserInfoFetcher $gitUserInfoFetcher;
 
     /**
      * Returns the description of the command.
      */
     abstract protected function getDescription () : string;
+
+    public function __construct (KernelInterface $kernel, GitUserInfoFetcher $gitUserInfoFetcher)
+    {
+        parent::__construct($kernel);
+        $this->gitUserInfoFetcher = $gitUserInfoFetcher;
+    }
 
     /**
      * Returns a array of of required options.
@@ -89,9 +97,8 @@ abstract class DddEntityMaker extends DddMaker
         $domainName = $normalizeInput($input->getOption("domain-name"));
         $entityName = $normalizeInput($input->getOption("entity-name"));
         $namespace = $normalizeInput($input->getOption("domain-namespace") ?? "");
-        $gitInfo = new GitUserInfoFetcher();
-        $gitUser = $gitInfo->getUserName();
-        $gitEmail = $gitInfo->getUserEmail($this->kernel);
+        $gitUser = $this->gitUserInfoFetcher->getUserName();
+        $gitEmail = $this->gitUserInfoFetcher->getUserEmail($this->kernel);
 
         $variables = [
             "domain_namespace" => empty($namespace) ? "" : $namespace . "\\",
@@ -115,14 +122,16 @@ abstract class DddEntityMaker extends DddMaker
     }
 
     /**
-     * Returns the suffix that should be appended to the entity name.
-     * The return value is used to generate the file name of the class
+     * Method that can be used by extending classes to provide extra variables to
+     *   their templates without needing to override the generate method.
      *
-     * @param array $variables The same variables that are passes to the template.
+     * The $input is the same that is passed to the generate method.
+     *
+     * The variables will be available as $extra inside the template.
      */
-    protected function getEntitySuffix (array $variables = []) : string
+    protected function getExtraVariables (InputInterface $input) : array
     {
-        return $variables["extra"]["entity_suffix"] ?? "";
+        return [];
     }
 
     /**
@@ -137,9 +146,21 @@ abstract class DddEntityMaker extends DddMaker
     }
 
     /**
+     * Returns the suffix that should be appended to the entity name.
+     * The return value is used to generate the file name of the class
+     *
+     * @param array $variables The same variables that are passes to the template.
+     */
+    protected function getEntitySuffix (array $variables = []) : string
+    {
+        return $variables["extra"]["entity_suffix"] ?? "";
+    }
+
+    /**
      * Returns the namespace that the generated class should be placed in.
      *
-     * @param array $variables The same variables that are passed to the template
+     * @param array $variables The same variables that are passed to the template.
+     *     Can be used by extending classes to build the namespace without needing to override the generate method.
      */
     protected function buildNamespace (string $domain, string $userProvidedNamespace, array $variables = []) : string
     {
@@ -163,18 +184,5 @@ abstract class DddEntityMaker extends DddMaker
             ...$namespaceTokens,
         ];
         return \implode("\\", $namespaceArray);
-    }
-
-    /**
-     * Method that can be used by extending classes to provide extra variables to
-     *   their templates without needing to override the generate method.
-     *
-     * The $input is the same that is passed to the generate method.
-     *
-     * The variables will be available as $extra inside the template.
-     */
-    protected function getExtraVariables (InputInterface $input) : array
-    {
-        return [];
     }
 }
