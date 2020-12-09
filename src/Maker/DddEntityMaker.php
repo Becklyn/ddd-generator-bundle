@@ -160,7 +160,7 @@ abstract class DddEntityMaker extends DddMaker
      * Returns the namespace that the generated class should be placed in.
      *
      * @param array $variables The same variables that are passed to the template.
-     *     Can be used by extending classes to build the namespace without needing to override the generate method.
+     *                         Can be used by extending classes to build the namespace without needing to override the generate method.
      */
     protected function buildNamespace (string $domain, string $userProvidedNamespace, array $variables = []) : string
     {
