@@ -1,0 +1,22 @@
+services:
+    C201\DddGeneratorBundle\:
+        resource: '../../*'
+        exclude: '../../{DependencyInjection, Resources}'
+        autowire: true
+
+    C201\DddGeneratorBundle\Maker\DddMaker:
+        class: 'C201\DddGeneratorBundle\Maker\DddMaker'
+        abstract: true
+        autowire: true
+
+    C201\DddGeneratorBundle\Maker\DddEntityMaker:
+        class: 'C201\DddGeneratorBundle\Maker\DddEntityMaker'
+        abstract: true
+        autowire: true
+
+    C201\DddGeneratorBundle\Maker\MakeDomain:
+        tags:
+            - maker.command
+        arguments:
+          ['@kernel']
+
