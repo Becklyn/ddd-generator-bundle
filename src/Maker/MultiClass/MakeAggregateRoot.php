@@ -2,6 +2,7 @@
 
 namespace C201\DddGeneratorBundle\Maker\MultiClass;
 
+use C201\DddGeneratorBundle\Helper\GitUserInfoFetcher;
 use C201\DddGeneratorBundle\Maker\DddEntityMaker;
 use C201\DddGeneratorBundle\Maker\Entity\MakeEntity;
 use C201\DddGeneratorBundle\Maker\Entity\MakeEntityDoctrineRepository;
@@ -47,17 +48,18 @@ class MakeAggregateRoot extends MultiClassMaker
      */
     public function getMakers () : array
     {
+        $gitUserFetcher = new GitUserInfoFetcher();
         return [
-            new MakeEntityId($this->kernel),
-            new MakeEntityEvent($this->kernel),
-            new MakeEntityGeneratedEvent($this->kernel),
-            new MakeEntityRepository($this->kernel),
-            new MakeEntityNotFoundException($this->kernel),
-            new MakeEntity($this->kernel),
-            new MakeEntityTestTrait($this->kernel),
-            new MakeEntityTest($this->kernel),
-            new MakeEntityDoctrineRepository($this->kernel),
-            new MakeEntityDoctrineRepositoryTest($this->kernel),
+            new MakeEntityId($this->kernel, $gitUserFetcher),
+            new MakeEntityEvent($this->kernel, $gitUserFetcher),
+            new MakeEntityGeneratedEvent($this->kernel, $gitUserFetcher),
+            new MakeEntityRepository($this->kernel, $gitUserFetcher),
+            new MakeEntityNotFoundException($this->kernel, $gitUserFetcher),
+            new MakeEntity($this->kernel, $gitUserFetcher),
+            new MakeEntityTestTrait($this->kernel, $gitUserFetcher),
+            new MakeEntityTest($this->kernel, $gitUserFetcher),
+            new MakeEntityDoctrineRepository($this->kernel, $gitUserFetcher),
+            new MakeEntityDoctrineRepositoryTest($this->kernel, $gitUserFetcher),
         ];
     }
 }
