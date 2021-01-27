@@ -39,28 +39,28 @@ services:
             - '@kernel'
             - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
 
-    C201\DddGeneratorBundle\Maker\Entity\MakeEntityDoctrineRepository:
+    C201\DddGeneratorBundle\Maker\Entity\MakeAggregateDoctrineRepository:
         tags:
             - maker.command
         arguments:
             - '@kernel'
             - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
 
-    C201\DddGeneratorBundle\Maker\Entity\MakeEntityDoctrineRepositoryTest:
+    C201\DddGeneratorBundle\Maker\Entity\MakeAggregateDoctrineRepositoryTest:
         tags:
             - maker.command
         arguments:
             - '@kernel'
             - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
 
-    C201\DddGeneratorBundle\Maker\Entity\MakeEntityEvent:
+    C201\DddGeneratorBundle\Maker\Entity\MakeAggregateEvent:
         tags:
             - maker.command
         arguments:
             - '@kernel'
             - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
 
-    C201\DddGeneratorBundle\Maker\Entity\MakeEntityGeneratedEvent:
+    C201\DddGeneratorBundle\Maker\Entity\MakeEntityCreatedEvent:
         tags:
             - maker.command
         arguments:
@@ -74,14 +74,14 @@ services:
             - '@kernel'
             - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
 
-    C201\DddGeneratorBundle\Maker\Entity\MakeEntityNotFoundException:
+    C201\DddGeneratorBundle\Maker\Entity\MakeAggregateNotFoundException:
         tags:
             - maker.command
         arguments:
             - '@kernel'
             - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
 
-    C201\DddGeneratorBundle\Maker\Entity\MakeEntityRepository:
+    C201\DddGeneratorBundle\Maker\Entity\MakeAggregateRepository:
         tags:
             - maker.command
         arguments:
@@ -101,3 +101,4 @@ services:
         arguments:
             - '@kernel'
             - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
+

@@ -11,7 +11,7 @@ use Symfony\Component\HttpKernel\KernelInterface;
  *
  * @author Pascal Gläßer <pascal.glaesser1997@gmail.com>
  *
- * @since 1.0.0 Initial Implementation
+ * @since 2021-01-27 Initial Implementation
  *
  * @internal This class should only be used internally and never be extended. This is for security reasons because this
  *     class uses the possibly dangerous shell_exec to fetch the information from git.

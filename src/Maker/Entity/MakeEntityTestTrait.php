@@ -14,7 +14,7 @@ use Prophecy\Prophecy\ObjectProphecy;
  *
  * @author Pascal Gläßer <pascal.glaesser1997@gmail.com>
  *
- * @since 1.0.0 Initial Implementation
+ * @since 2021-01-27 Initial Implementation
  */
 class MakeEntityTestTrait extends DddEntityTestMaker
 {

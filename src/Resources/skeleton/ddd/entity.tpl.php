@@ -44,15 +44,15 @@ class <?= $class_name; ?> implements EventProvider
     private ?\DateTimeImmutable $updatedTs = null;
 
     /**
-     * Factory method that generates a new entity and raises a event if the entity was generated.
+     * Factory method that generates a new entity and raises a event if the entity was created.
      */
-    public static function <?= $i18n["_generate"]; ?> (<?= $entity; ?>Id $id) : self
+    public static function <?= $i18n["_create"]; ?> (<?= $entity; ?>Id $id) : self
     {
         // TODO add additional properties
 
         $<?= \strtolower($entity); ?> = new static($id);
         $<?= \strtolower($entity); ?>->raiseEvent(
-            new <?= $entity; ?><?= $i18n["generated"]; ?>(
+            new <?= $entity; ?><?= $i18n["created"]; ?>(
                 $<?= \strtolower($entity); ?>->nextEventIdentity(),
                 new \DateTimeImmutable(),
                 $id

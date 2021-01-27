@@ -5,13 +5,13 @@ namespace C201\DddGeneratorBundle\Maker\MultiClass;
 use C201\DddGeneratorBundle\Helper\GitUserInfoFetcher;
 use C201\DddGeneratorBundle\Maker\DddEntityMaker;
 use C201\DddGeneratorBundle\Maker\Entity\MakeEntity;
-use C201\DddGeneratorBundle\Maker\Entity\MakeEntityDoctrineRepository;
-use C201\DddGeneratorBundle\Maker\Entity\MakeEntityDoctrineRepositoryTest;
-use C201\DddGeneratorBundle\Maker\Entity\MakeEntityEvent;
-use C201\DddGeneratorBundle\Maker\Entity\MakeEntityGeneratedEvent;
+use C201\DddGeneratorBundle\Maker\Entity\MakeAggregateDoctrineRepository;
+use C201\DddGeneratorBundle\Maker\Entity\MakeAggregateDoctrineRepositoryTest;
+use C201\DddGeneratorBundle\Maker\Entity\MakeAggregateEvent;
+use C201\DddGeneratorBundle\Maker\Entity\MakeEntityCreatedEvent;
 use C201\DddGeneratorBundle\Maker\Entity\MakeEntityId;
-use C201\DddGeneratorBundle\Maker\Entity\MakeEntityNotFoundException;
-use C201\DddGeneratorBundle\Maker\Entity\MakeEntityRepository;
+use C201\DddGeneratorBundle\Maker\Entity\MakeAggregateNotFoundException;
+use C201\DddGeneratorBundle\Maker\Entity\MakeAggregateRepository;
 use C201\DddGeneratorBundle\Maker\Entity\MakeEntityTest;
 use C201\DddGeneratorBundle\Maker\Entity\MakeEntityTestTrait;
 
@@ -23,7 +23,7 @@ use C201\DddGeneratorBundle\Maker\Entity\MakeEntityTestTrait;
  *
  * @author Pascal Gläßer <pascal.glaesser1997@gmail.com>
  *
- * @since 1.0.0 Initial Implementation
+ * @since 2021-01-27 Initial Implementation
  */
 class MakeAggregateRoot extends MultiClassMaker
 {
@@ -51,15 +51,15 @@ class MakeAggregateRoot extends MultiClassMaker
         $gitUserFetcher = new GitUserInfoFetcher();
         return [
             new MakeEntityId($this->kernel, $gitUserFetcher),
-            new MakeEntityEvent($this->kernel, $gitUserFetcher),
-            new MakeEntityGeneratedEvent($this->kernel, $gitUserFetcher),
-            new MakeEntityRepository($this->kernel, $gitUserFetcher),
-            new MakeEntityNotFoundException($this->kernel, $gitUserFetcher),
+            new MakeAggregateEvent($this->kernel, $gitUserFetcher),
+            new MakeEntityCreatedEvent($this->kernel, $gitUserFetcher),
+            new MakeAggregateRepository($this->kernel, $gitUserFetcher),
+            new MakeAggregateNotFoundException($this->kernel, $gitUserFetcher),
             new MakeEntity($this->kernel, $gitUserFetcher),
             new MakeEntityTestTrait($this->kernel, $gitUserFetcher),
             new MakeEntityTest($this->kernel, $gitUserFetcher),
-            new MakeEntityDoctrineRepository($this->kernel, $gitUserFetcher),
-            new MakeEntityDoctrineRepositoryTest($this->kernel, $gitUserFetcher),
+            new MakeAggregateDoctrineRepository($this->kernel, $gitUserFetcher),
+            new MakeAggregateDoctrineRepositoryTest($this->kernel, $gitUserFetcher),
         ];
     }
 }

@@ -14,9 +14,9 @@ use Doctrine\Persistence\ObjectRepository;
  *
  * @author Pascal Gläßer <pascal.glaesser1997@gmail.com>
  *
- * @since 1.0.0 Initial Implementation
+ * @since 2021-01-27 Initial Implementation
  */
-class MakeEntityDoctrineRepository extends DddEntityMaker
+class MakeAggregateDoctrineRepository extends DddEntityMaker
 {
     protected string $layer = "Infrastructure\\Domain";
 

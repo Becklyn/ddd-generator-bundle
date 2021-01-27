@@ -3,9 +3,9 @@
 # _generate: generate
 # generate: Generate
 
-_generate: erzeugen
+_create: erzeugen
 
-generated: Erzeugt
+created: Erzeugt
 not_found: NichtGefunden
 
 test:
