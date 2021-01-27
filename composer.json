@@ -17,7 +17,8 @@
         }
     ],
     "require": {
-        "ext-json": "*"
+        "ext-json": "*",
+        "symfony/maker-bundle": "^1.21"
     },
     "require-dev": {
         "php": ">=7.4",
@@ -30,7 +31,7 @@
         "symfony/dependency-injection": "^5.1",
         "symfony/filesystem": "^5.1",
         "symfony/finder": "^5.1",
-        "symfony/maker-bundle": "^1.21",
+
         "symfony/phpunit-bridge": "^5.1",
         "symfony/yaml": "^5.1"
     },
@@ -44,12 +45,12 @@
     },
     "repositories": [
         {
-            "type": "path",
-            "url": "/Users/passcalglasser/Desktop/201created/ddd"
+            "type": "github",
+            "url": "https://github.com/201created-gmbh/ddd-core"
         },
         {
-            "type": "path",
-            "url": "/Users/passcalglasser/Desktop/201created/collections"
+            "type": "github",
+            "url": "https://github.com/201CREATED-GmbH/support"
         }
     ],
     "scripts": {
