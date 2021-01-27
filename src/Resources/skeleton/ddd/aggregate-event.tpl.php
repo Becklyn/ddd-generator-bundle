@@ -10,7 +10,7 @@ use C201\Ddd\Events\Domain\EventId;
  *
  * @since <?= $version; ?><?= "\n"; ?>
  */
-class <?= $class_name; ?> extends AbstractDomainEvent
+abstract class <?= $class_name; ?> extends AbstractDomainEvent
 {
     protected <?= $entity; ?>Id $<?= \strtolower($entity); ?>Id;
 
