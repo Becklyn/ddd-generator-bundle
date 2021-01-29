@@ -40,7 +40,7 @@ class MakeDomain extends DddEntityMaker
      */
     public function generate (InputInterface $input, ConsoleStyle $io, Generator $generator) : void
     {
-        $normalizeInput = fn (string $string) => (new UnicodeString($string))->title(true)->toString();
+        $normalizeInput = fn (string $string) => (new UnicodeString($string))->camel()->title(true)->toString();
         $domain = $normalizeInput($input->getOption("domain-name"));
         $path = $this->kernel->getProjectDir() . "/src/{$domain}/domain_config.yaml";
 

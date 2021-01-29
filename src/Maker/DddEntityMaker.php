@@ -71,7 +71,7 @@ abstract class DddEntityMaker extends DddMaker
                 "domain-namespace",
                 null,
                 InputOption::VALUE_REQUIRED,
-                "In which namespace should the entity be created?\nPlease use the \\ delimiter for nested namespaces.",
+                "In which sub-namespace should the entity be created?\n\tPlease note that the domain name and layer will be prefixed like so: \n\tDomainName\\Infrastructure\\SubNamespace(s)\n\n Please use the \\ delimiter for nested namespaces",
                 null
             );
     }
@@ -84,7 +84,7 @@ abstract class DddEntityMaker extends DddMaker
      */
     public function generate (InputInterface $input, ConsoleStyle $io, Generator $generator) : void
     {
-        $normalizeInput = fn (string $string) => (new UnicodeString($string))->lower()->camel()->title(true)->toString();
+        $normalizeInput = fn (string $string) => (new UnicodeString($string))->camel()->title(true)->toString();
 
         foreach ($this->getRequiredOptions() as $option)
         {
@@ -96,7 +96,8 @@ abstract class DddEntityMaker extends DddMaker
 
         $domainName = $normalizeInput($input->getOption("domain-name"));
         $entityName = $normalizeInput($input->getOption("entity-name"));
-        $namespace = $normalizeInput($input->getOption("domain-namespace") ?? "");
+        $namespace = $input->getOption("domain-namespace") ?? "";
+        echo $domainName, $entityName, $namespace;
         $gitUser = $this->gitUserInfoFetcher->getUserName();
         $gitEmail = $this->gitUserInfoFetcher->getUserEmail($this->kernel);
 
