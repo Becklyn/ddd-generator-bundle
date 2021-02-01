@@ -4,8 +4,8 @@ services:
         exclude: '../../{DependencyInjection, Resources}'
         autowire: true
 
-    C201\DDDGeneratorBundle\Helper\GitUserFetcher:
-        class: 'C201\DDDGeneratorBundle\Helper\GitUserFetcher'
+    C201\DddGeneratorBundle\Helper\GitUserInfoFetcher:
+        class: 'C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
         autowire: true
 
     C201\DddGeneratorBundle\Maker\DddMaker:
