@@ -30,25 +30,25 @@ class <?= $class_name; ?> implements <?= $entity; ?>Repository
         return <?= $entity; ?>Id::next();
     }
 
-    public function add (<?= $entity; ?> $<?= \strtolower($entity); ?>) : void
+    public function add (<?= $entity; ?> $<?= $strtocamel($entity); ?>) : void
     {
-        $this->entityManager->persist($<?= \strtolower($entity); ?>);
+        $this->entityManager->persist($<?= $strtocamel($entity); ?>);
     }
 
-    public function remove (<?= $entity; ?> $<?= \strtolower($entity); ?>) : void
+    public function remove (<?= $entity; ?> $<?= $strtocamel($entity); ?>) : void
     {
-        $this->entityManager->remove($<?= \strtolower($entity); ?>);
+        $this->entityManager->remove($<?= $strtocamel($entity); ?>);
     }
 
-    public function findOneById (<?= $entity; ?>Id $<?= \strtolower($entity); ?>Id) : <?= $entity; ?><?= "\n"; ?>
+    public function findOneById (<?= $entity; ?>Id $<?= $strtocamel($entity); ?>Id) : <?= $entity; ?><?= "\n"; ?>
     {
-        /** @var <?= $entity; ?> $<?= \strtolower($entity); ?> */
-        $<?= \strtolower($entity); ?> = $this->repository->findOneBy(['id' => $<?= \strtolower($entity); ?>Id->asString()]);
+        /** @var <?= $entity; ?> $<?= $strtocamel($entity); ?> */
+        $<?= $strtocamel($entity); ?> = $this->repository->findOneBy(['id' => $<?= $strtocamel($entity); ?>Id->asString()]);
 
-        if (null === $<?= \strtolower($entity); ?>) {
-            throw new <?= $entity; ?><?= $i18n["not_found"]; ?>Exception("<?= $entity; ?> \"{$<?= \strtolower($entity); ?>Id->asString()}\" cannot be found.");
+        if (null === $<?= $strtocamel($entity); ?>) {
+            throw new <?= $entity; ?><?= $i18n["not_found"]; ?>Exception("<?= $entity; ?> \"{$<?= $strtocamel($entity); ?>Id->asString()}\" cannot be found.");
         }
 
-        return $<?= \strtolower($entity); ?>;
+        return $<?= $strtocamel($entity); ?>;
     }
 }

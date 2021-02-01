@@ -14,10 +14,10 @@ class <?= $class_name; ?> extends <?= $entity; ?>Event
     public function __construct (
         EventId $id,
         \DateTimeImmutable $raisedTs,
-        <?= $entity; ?>Id $<?= \strtolower($entity); ?>Id
+        <?= $entity; ?>Id $<?= $strtocamel($entity); ?>Id
     )
     {
-        parent::__construct($id, $raisedTs, $<?= \strtolower($entity); ?>Id);
+        parent::__construct($id, $raisedTs, $<?= $strtocamel($entity); ?>Id);
 
         // TODO add additional properties
     }

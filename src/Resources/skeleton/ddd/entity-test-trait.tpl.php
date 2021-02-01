@@ -18,14 +18,14 @@ trait <?= $class_name; ?><?= "\n"; ?>
     /**
      * @var ObjectProphecy|<?= $entity; ?>Repository
      */
-    protected ObjectProphecy $<?= \strtolower($entity); ?>Repository;
+    protected ObjectProphecy $<?= $strtocamel($entity); ?>Repository;
 
     protected function init<?= $entity; ?>TestTrait () : void
     {
-        $this-><?= \strtolower($entity); ?>Repository = $this->prophesize(<?= $entity; ?>Repository::class);
+        $this-><?= $strtocamel($entity); ?>Repository = $this->prophesize(<?= $entity; ?>Repository::class);
     }
 
-    protected function <?= $i18n["test"]["_get"]; ?><?= $entity; ?>Id () : <?= $entity; ?>Id
+    protected function <?= $i18n["test"]["_given"]; ?><?= $entity; ?>Id () : <?= $entity; ?>Id
     {
         return <?= $entity; ?>Id::next();
     }
@@ -33,34 +33,34 @@ trait <?= $class_name; ?><?= "\n"; ?>
     /**
      * @return ObjectProphecy|<?= $entity; ?><?= "\n"; ?>
      */
-    protected function <?= $i18n["test"]["_get"]; ?><?= $entity; ?> () : ObjectProphecy
+    protected function <?= $i18n["test"]["_given"]; ?><?= $entity; ?> () : ObjectProphecy
     {
-        /** @var ObjectProphecy|<?= $entity; ?> $<?= \strtolower($entity); ?> */
-        $<?= \strtolower($entity); ?> = $this->prophesize(<?= $entity; ?>::class);
-        return $<?= \strtolower($entity); ?>;
+        /** @var ObjectProphecy|<?= $entity; ?> $<?= $strtocamel($entity); ?> */
+        $<?= $strtocamel($entity); ?> = $this->prophesize(<?= $entity; ?>::class);
+        return $<?= $strtocamel($entity); ?>;
     }
 
     /**
-     * @param ObjectProphecy|<?= $entity; ?> $<?= \strtolower($entity); ?><?= "\n"; ?>
+     * @param ObjectProphecy|<?= $entity; ?> $<?= $strtocamel($entity); ?><?= "\n"; ?>
      */
-    protected function <?= $i18n["test"]["_if"]; ?><?= $entity; ?>Id<?= $i18n["test"]["matches"]; ?> (ObjectProphecy $<?= \strtolower($entity); ?>, <?= $entity; ?>Id $id) : void
+    protected function <?= $i18n["test"]["_when"]; ?><?= $entity; ?>Id<?= $i18n["test"]["matches"]; ?> (ObjectProphecy $<?= $strtocamel($entity); ?>, <?= $entity; ?>Id $id) : void
     {
-        $<?= \strtolower($entity); ?>->id()->willReturn($id);
+        $<?= $strtocamel($entity); ?>->id()->willReturn($id);
     }
 
     /**
      * @return ObjectProphecy|<?= $entity; ?><?= "\n"; ?>
      */
-    protected function <?= $i18n["test"]["_if"]; ?><?= $entity; ?><?= $i18n["test"]["can_be_found_by_id"]; ?> (<?= $entity; ?>Id $<?= \strtolower($entity); ?>Id) : ObjectProphecy
+    protected function <?= $i18n["test"]["_when"]; ?><?= $entity; ?><?= $i18n["test"]["can_be_found_by_id"]; ?> (<?= $entity; ?>Id $<?= $strtocamel($entity); ?>Id) : ObjectProphecy
     {
-        $<?= \strtolower($entity); ?> = $this-><?= $i18n["test"]["_get"]; ?><?= $entity; ?>();
-        $this-><?= $i18n["test"]["_if"]; ?><?= $entity; ?>Id<?= $i18n["test"]["matches"]; ?>($<?= \strtolower($entity); ?>, $<?= \strtolower($entity); ?>Id);
-        $this-><?= \strtolower($entity); ?>Repository->findOneById($<?= \strtolower($entity); ?>Id)->willReturn($<?= \strtolower($entity); ?>->reveal());
-        return $<?= \strtolower($entity); ?>;
+        $<?= $strtocamel($entity); ?> = $this-><?= $i18n["test"]["_given"]; ?><?= $entity; ?>();
+        $this-><?= $i18n["test"]["_when"]; ?><?= $entity; ?>Id<?= $i18n["test"]["matches"]; ?>($<?= $strtocamel($entity); ?>, $<?= $strtocamel($entity); ?>Id);
+        $this-><?= $strtocamel($entity); ?>Repository->findOneById($<?= $strtocamel($entity); ?>Id)->willReturn($<?= $strtocamel($entity); ?>->reveal());
+        return $<?= $strtocamel($entity); ?>;
     }
 
-    protected function <?= $i18n["test"]["_if"]; ?><?= $entity; ?><?= $i18n["test"]["cannot_be_found_by_id"]; ?> (<?= $entity; ?>Id $<?= \strtolower($entity); ?>Id) : void
+    protected function <?= $i18n["test"]["_when"]; ?><?= $entity; ?><?= $i18n["test"]["cannot_be_found_by_id"]; ?> (<?= $entity; ?>Id $<?= $strtocamel($entity); ?>Id) : void
     {
-        $this-><?= \strtolower($entity); ?>Repository->findOneById($<?= \strtolower($entity); ?>Id)->willThrow(new <?= $entity; ?><?= $i18n["not_found"]; ?>Exception());
+        $this-><?= $strtocamel($entity); ?>Repository->findOneById($<?= $strtocamel($entity); ?>Id)->willThrow(new <?= $entity; ?><?= $i18n["not_found"]; ?>Exception());
     }
 }

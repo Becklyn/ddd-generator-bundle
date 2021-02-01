@@ -21,23 +21,23 @@ class <?= $class_name; ?> extends TestCase
 
     public function test<?= $entity; ?><?= $i18n["test"]["is_generated_with_correct_values"]; ?> () : void
     {
-        $id = $this-><?= $i18n["test"]["_get"]; ?><?= $entity; ?>Id();
+        $id = $this-><?= $i18n["test"]["_given"]; ?><?= $entity; ?>Id();
         // TODO implement additional properties
 
-        $<?= \strtolower($entity); ?> = <?= $entity; ?>::<?= $i18n["_create"]; ?>($id);
+        $<?= $strtocamel($entity); ?> = <?= $entity; ?>::<?= $i18n["_create"]; ?>($id);
 
-        $this->assertTrue($id->equals($<?= \strtolower($entity); ?>->id()));
+        $this->assertTrue($id->equals($<?= $strtocamel($entity); ?>->id()));
         // TODO implement asserts for additional properties which have getters
     }
 
     public function testCreate<?= $i18n["test"]["generate"]; ?><?= $entity; ?><?= $i18n["test"]["raises_event"]; ?> () : void
     {
-        $id = $this-><?= $i18n["test"]["_get"]; ?><?= $entity; ?>Id();
+        $id = $this-><?= $i18n["test"]["_given"]; ?><?= $entity; ?>Id();
         // TODO implement additional properties
 
-        $<?= \strtolower($entity); ?> = <?= $entity; ?>::<?= $i18n["_create"]; ?>($id);
+        $<?= $strtocamel($entity); ?> = <?= $entity; ?>::<?= $i18n["_create"]; ?>($id);
 
-        $events = $<?= \strtolower($entity); ?>->dequeueEvents();
+        $events = $<?= $strtocamel($entity); ?>->dequeueEvents();
         $this->assertCount(1, $events);
         $this->assertContainsOnly(<?= $entity; ?><?= $i18n["created"]; ?>::class, $events);
 

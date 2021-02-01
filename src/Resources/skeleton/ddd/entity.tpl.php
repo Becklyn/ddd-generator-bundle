@@ -13,7 +13,8 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * @since <?= $version; ?><?= "\n"; ?>
  *
  * @ORM\Entity
- * @ORM\Table(name="<?= \strtolower($domain); ?>_<?= \strtolower($entity); ?>")
+ * @ORM\Table(name="<?= $strtosnake($domain); ?>_<?= $strtosnake($entity); ?>s")
+ * @todo Check table name "<?= $strtosnake($domain); ?>_<?= $strtosnake($entity); ?>s" for grammar.
  */
 class <?= $class_name; ?> implements EventProvider
 {
@@ -50,16 +51,16 @@ class <?= $class_name; ?> implements EventProvider
     {
         // TODO add additional properties
 
-        $<?= \strtolower($entity); ?> = new static($id);
-        $<?= \strtolower($entity); ?>->raiseEvent(
+        $<?= $strtocamel($entity); ?> = new static($id);
+        $<?= $strtocamel($entity); ?>->raiseEvent(
             new <?= $entity; ?><?= $i18n["created"]; ?>(
-                $<?= \strtolower($entity); ?>->nextEventIdentity(),
+                $<?= $strtocamel($entity); ?>->nextEventIdentity(),
                 new \DateTimeImmutable(),
                 $id
             )
         );
 
-        return $<?= \strtolower($entity); ?>;
+        return $<?= $strtocamel($entity); ?>;
     }
 
     private function __construct (<?= $entity; ?>Id $id)

@@ -12,17 +12,17 @@ use C201\Ddd\Events\Domain\EventId;
  */
 abstract class <?= $class_name; ?> extends AbstractDomainEvent
 {
-    protected <?= $entity; ?>Id $<?= \strtolower($entity); ?>Id;
+    protected <?= $entity; ?>Id $<?= $strtocamel($entity); ?>Id;
 
-    public function __construct (EventId $id, \DateTimeImmutable $raisedTs, <?= $entity; ?>Id $<?= \strtolower($entity); ?>Id)
+    public function __construct (EventId $id, \DateTimeImmutable $raisedTs, <?= $entity; ?>Id $<?= $strtocamel($entity); ?>Id)
     {
         parent::__construct($id, $raisedTs);
-        $this-><?= \strtolower($entity); ?>Id = $<?= \strtolower($entity); ?>Id;
+        $this-><?= $strtocamel($entity); ?>Id = $<?= $strtocamel($entity); ?>Id;
     }
 
     public function aggregateId () : <?= $entity; ?>Id
     {
-        return $this-><?= \strtolower($entity); ?>Id;
+        return $this-><?= $strtocamel($entity); ?>Id;
     }
 
     public function aggregateType () : string
