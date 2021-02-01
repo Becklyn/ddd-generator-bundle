@@ -39,7 +39,7 @@ abstract class DddEntityMaker extends DddMaker
     }
 
     /**
-     * Returns a array of of required options.
+     * Returns a array of required options.
      *
      * @return string[]
      */
@@ -84,7 +84,7 @@ abstract class DddEntityMaker extends DddMaker
      */
     public function generate (InputInterface $input, ConsoleStyle $io, Generator $generator) : void
     {
-        $normalizeInput = fn (string $string) => (new UnicodeString($string))->camel()->title(true)->toString();
+        $normalizeInput = fn (string $string) => (new UnicodeString($string))->camel()->title()->toString();
 
         foreach ($this->getRequiredOptions() as $option)
         {
@@ -97,12 +97,11 @@ abstract class DddEntityMaker extends DddMaker
         $domainName = $normalizeInput($input->getOption("domain-name"));
         $entityName = $normalizeInput($input->getOption("entity-name"));
         $namespace = $input->getOption("domain-namespace") ?? "";
-        echo $domainName, $entityName, $namespace;
         $gitUser = $this->gitUserInfoFetcher->getUserName();
         $gitEmail = $this->gitUserInfoFetcher->getUserEmail($this->kernel);
 
         $variables = [
-            "domain_namespace" => empty($namespace) ? "" : $namespace . "\\",
+            "domain_namespace" => empty($namespace) ? "" : $this->normalizeNamespace($namespace, $normalizeInput) . "\\",
             "entity" => $entityName,
             "domain" => $domainName,
             "psr4Root" => $generator->getRootNamespace(),
@@ -110,14 +109,18 @@ abstract class DddEntityMaker extends DddMaker
             "version" => (new \DateTimeImmutable())->format("Y-m-d"),
             "author" => "{$gitUser} <{$gitEmail}>",
             "extra" => $this->getExtraVariables($input),
+
+            // The following functions will be available in the template
+            "strtosnake" => fn (string $string) => (new UnicodeString($string))->snake()->toString(),
+            "strtocamel" => fn (string $string) => (new UnicodeString($string))->camel()->toString(),
         ];
+
 
         $className = $this->getEntityPrefix($variables) . $entityName . $this->getEntitySuffix($variables);
         $class = $generator->createClassNameDetails(
             $className,
             $this->buildNamespace($domainName, $namespace, $variables)
         );
-
         $generator->generateClass($class->getFullName(), $this->getTemplatePath(), $variables);
         $generator->writeChanges();
     }
@@ -167,10 +170,23 @@ abstract class DddEntityMaker extends DddMaker
     {
         $layer = $this->layer;
         $namespaceTokens = [
-            "{$domain}\\{$layer}",
-            ...\explode("\\", $userProvidedNamespace),
+            "{$domain}",
+            "{$layer}",
+            $this->normalizeNamespace($userProvidedNamespace),
         ];
+        $namespaceTokens = \array_filter($namespaceTokens, 'strlen');
         return \implode("\\", $namespaceTokens);
+    }
+
+
+    /**
+     * Returns a well-formed namespace string by applying the callback function to the namespace fragments
+     */
+    protected function normalizeNamespace(string $namespace, ?callable $callback = null) : string
+    {
+        $normalize = $callback ?? fn (string $string) => (new UnicodeString($string))->camel()->title()->toString();
+        $tokens = \explode('\\', $namespace);
+        return \implode('\\', \array_map($normalize, $tokens));
     }
 
     /**
@@ -184,6 +200,7 @@ abstract class DddEntityMaker extends DddMaker
             ...\explode("\\", $currentNamespace),
             ...$namespaceTokens,
         ];
+        $namespaceArray = \array_filter($namespaceArray, 'strlen');
         return \implode("\\", $namespaceArray);
     }
 }
