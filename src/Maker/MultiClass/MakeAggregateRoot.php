@@ -4,14 +4,14 @@ namespace C201\DddGeneratorBundle\Maker\MultiClass;
 
 use C201\DddGeneratorBundle\Helper\GitUserInfoFetcher;
 use C201\DddGeneratorBundle\Maker\DddEntityMaker;
-use C201\DddGeneratorBundle\Maker\Entity\MakeEntity;
 use C201\DddGeneratorBundle\Maker\Entity\MakeAggregateDoctrineRepository;
 use C201\DddGeneratorBundle\Maker\Entity\MakeAggregateDoctrineRepositoryTest;
 use C201\DddGeneratorBundle\Maker\Entity\MakeAggregateEvent;
-use C201\DddGeneratorBundle\Maker\Entity\MakeEntityCreatedEvent;
-use C201\DddGeneratorBundle\Maker\Entity\MakeEntityId;
 use C201\DddGeneratorBundle\Maker\Entity\MakeAggregateNotFoundException;
 use C201\DddGeneratorBundle\Maker\Entity\MakeAggregateRepository;
+use C201\DddGeneratorBundle\Maker\Entity\MakeEntity;
+use C201\DddGeneratorBundle\Maker\Entity\MakeEntityCreatedEvent;
+use C201\DddGeneratorBundle\Maker\Entity\MakeEntityId;
 use C201\DddGeneratorBundle\Maker\Entity\MakeEntityTest;
 use C201\DddGeneratorBundle\Maker\Entity\MakeEntityTestTrait;
 
