@@ -11,9 +11,9 @@ not_found: NotFound
 test:
     _actual: returned
     _expected: expected
-    _get: get
-    _if: if
-    _then: then
+    _given: given     # given (gherkin scheme)
+    _when: when       # when (gherkin scheme)
+    _then: then     # then (gherkin scheme)
 
     by_id: ById
     can_be_found_by_id: CanBeFoundById

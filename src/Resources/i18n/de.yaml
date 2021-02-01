@@ -11,13 +11,13 @@ not_found: NichtGefunden
 test:
     _actual: ist
     _expected: soll
-    _get: hole
-    _if: angenommen
-    _then: dann
+    _given: angenommen    # given (gherkin scheme)
+    _when: wenn           # when (gherkin scheme)
+    _then: dann         # then (gherkin scheme)
 
     by_id: ViaId
-    can_be_found_by_id: KannDurchIdGefundenWerden
-    cannot_be_found_by_id: KannNichtDurchIdGefundenWerden
+    can_be_found_by_id: DurchIdGefundenWerdenKann
+    cannot_be_found_by_id: DurchIdNichtGefundenWerdenKann
     did_find: Findet
     expect: Erwarte
     raises_event: ErzeugtEvent
