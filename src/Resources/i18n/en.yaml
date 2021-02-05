@@ -15,24 +15,24 @@ test:
     _when: when       # when (gherkin scheme)
     _then: then     # then (gherkin scheme)
 
+    be_returned: ShouldBeReturned
     by_id: ById
     can_be_found_by_id: CanBeFoundById
     cannot_be_found_by_id: CannotBeFoundById
-    did_find: DidFind
     expect: Expect
-    raises_event: RaisesEvent
+    finds: Finds
     from: From
-    for_given: ForGiven
-    generate: Creates
+    for_given: ForPassed
     if: If
     in: In
     instead_of: InsteadOf
-    is_generated_with_correct_values: IsGeneratedWithCorrectValues
     matches: Matches
     persists: Persists
+    raises: Raises
     removes: Removes
     returns: Returns
     returns_null: ReturnsNull
-    should: Should
+    should: ''
     throws: Throws
-    was_executed: WasExecuted
+    was_executed: IsExecuted
+    with_correct_values: WithCorrectValues

@@ -67,17 +67,17 @@ class <?= $class_name; ?> extends TestCase
     public function testFindOneById<?= $i18n["test"]["returns"]; ?><?= $entity; ?><?= $i18n["test"]["from"]; ?>DoctrineRepository () : void
     {
         $id = $this-><?= $i18n["test"]["_given"]; ?><?= $entity; ?>Id();
-        $<?= $strtocamel($entity); ?> = $this-><?= $i18n["test"]["_when"]; ?>DoctrineRepository<?= $i18n["test"]["did_find"]; ?><?= $entity; ?><?= $i18n["test"]["by_id"]; ?>($id);
-        $this-><?= $i18n["test"]["_then"]; ?><?= $i18n["test"]["expect"]; ?><?= $entity; ?><?= $i18n["test"]["matches"]; ?>(
+        $<?= $strtocamel($entity); ?> = $this-><?= $i18n["test"]["_given"]; ?>DoctrineRepository<?= $i18n["test"]["finds"]; ?><?= $entity; ?><?= $i18n["test"]["by_id"]; ?>($id);
+        $this-><?= $i18n["test"]["_then"]; ?><?= $i18n["test"]["should"]; ?><?= $entity; ?><?= $i18n["test"]["be_returned"]; ?>(
             $<?= $strtocamel($entity); ?>->reveal(),
             $this-><?= $i18n["test"]["_when"]; ?>FindOneById<?= $i18n["test"]["was_executed"]; ?>($id)
         );
     }
 
     /**
-     * @return ObjectProphecy|<?= $entity; ?>
+     * @return ObjectProphecy|<?= $entity; ?><?= "\n"; ?>
      */
-    private function <?= $i18n["test"]["_when"]; ?>DoctrineRepository<?= $i18n["test"]["did_find"]; ?><?= $entity; ?><?= $i18n["test"]["by_id"]; ?> (<?= $entity; ?>Id $id) : ObjectProphecy
+    private function <?= $i18n["test"]["_given"]; ?>DoctrineRepository<?= $i18n["test"]["finds"]; ?><?= $entity; ?><?= $i18n["test"]["by_id"]; ?> (<?= $entity; ?>Id $id) : ObjectProphecy
     {
         /** @var <?= $entity; ?> $<?= $strtocamel($entity); ?> */
         $<?= $strtocamel($entity); ?> = $this->prophesize(<?= $entity; ?>::class);
@@ -87,7 +87,7 @@ class <?= $class_name; ?> extends TestCase
         return $<?= $strtocamel($entity); ?>;
     }
 
-    private function <?= $i18n["test"]["_then"]; ?><?= $i18n["test"]["expect"]; ?><?= $entity; ?><?= $i18n["test"]["matches"]; ?> (<?= $entity; ?> $<?= $i18n["test"]["_expected"]; ?>, <?= $entity; ?> $<?= $i18n["test"]["_actual"]; ?>) : void
+    private function <?= $i18n["test"]["_then"]; ?><?= $i18n["test"]["should"]; ?><?= $entity; ?><?= $i18n["test"]["be_returned"]; ?> (<?= $entity; ?> $<?= $i18n["test"]["_expected"]; ?>, <?= $entity; ?> $<?= $i18n["test"]["_actual"]; ?>) : void
     {
         $this->assertSame($<?= $i18n["test"]["_expected"]; ?>, $<?= $i18n["test"]["_actual"]; ?>);
     }
@@ -100,12 +100,12 @@ class <?= $class_name; ?> extends TestCase
     public function testFindOneById<?= $i18n["test"]["throws"]; ?><?= $entity; ?><?= $i18n["not_found"]; ?>Exception<?= $i18n["test"]["if"]; ?>DoctrineRepository<?= $i18n["test"]["returns_null"]; ?><?= $i18n["test"]["instead_of"]; ?><?= $entity; ?> () : void
     {
         $id = $this-><?= $i18n["test"]["_given"]; ?><?= $entity; ?>Id();
-        $this-><?= $i18n["test"]["_when"]; ?>DoctrineRepositoryFindOneBy<?= $i18n["test"]["returns_null"]; ?><?= $i18n["test"]["for_given"]; ?><?= $entity; ?>Id($id);
+        $this-><?= $i18n["test"]["_given"]; ?>DoctrineRepositoryFindOneBy<?= $i18n["test"]["returns_null"]; ?><?= $i18n["test"]["for_given"]; ?><?= $entity; ?>Id($id);
         $this-><?= $i18n["test"]["_then"]; ?><?= $i18n["test"]["expect"]; ?><?= $entity; ?><?= $i18n["not_found"]; ?>Exception();
         $this-><?= $i18n["test"]["_when"]; ?>FindOneById<?= $i18n["test"]["was_executed"]; ?>($id);
     }
 
-    private function <?= $i18n["test"]["_when"]; ?>DoctrineRepositoryFindOneBy<?= $i18n["test"]["returns_null"]; ?><?= $i18n["test"]["for_given"]; ?><?= $entity; ?>Id (<?= $entity; ?>Id $id) : void
+    private function <?= $i18n["test"]["_given"]; ?>DoctrineRepositoryFindOneBy<?= $i18n["test"]["returns_null"]; ?><?= $i18n["test"]["for_given"]; ?><?= $entity; ?>Id (<?= $entity; ?>Id $id) : void
     {
         $this->doctrineRepository->findOneBy(['id' => $id->asString()])->willReturn(null);
     }

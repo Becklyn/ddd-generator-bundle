@@ -19,7 +19,7 @@ class <?= $class_name; ?> extends TestCase
 {
     use <?= $entity; ?>TestTrait;
 
-    public function test<?= $entity; ?><?= $i18n["test"]["is_generated_with_correct_values"]; ?> () : void
+    public function testCreate<?=$i18n['test']['returns']?><?= $entity; ?><?= $i18n["test"]["with_correct_values"]; ?> () : void
     {
         $id = $this-><?= $i18n["test"]["_given"]; ?><?= $entity; ?>Id();
         // TODO implement additional properties
@@ -30,7 +30,7 @@ class <?= $class_name; ?> extends TestCase
         // TODO implement asserts for additional properties which have getters
     }
 
-    public function testCreate<?= $i18n["test"]["generate"]; ?><?= $entity; ?><?= $i18n["test"]["raises_event"]; ?> () : void
+    public function testCreate<?= $i18n["test"]["raises"]; ?><?= $entity; ?><?= $i18n["created"]; ?>Event () : void
     {
         $id = $this-><?= $i18n["test"]["_given"]; ?><?= $entity; ?>Id();
         // TODO implement additional properties

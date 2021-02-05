@@ -15,24 +15,24 @@ test:
     _when: wenn           # when (gherkin scheme)
     _then: dann         # then (gherkin scheme)
 
-    by_id: ViaId
-    can_be_found_by_id: DurchIdGefundenWerdenKann
-    cannot_be_found_by_id: DurchIdNichtGefundenWerdenKann
-    did_find: Findet
+    be_returned: ErwiedertWerden
+    by_id: DurchId
+    can_be_found_by_id: KannDurchIdGefundenWerden
+    cannot_be_found_by_id: KannDurchIdNichtGefundenWerden
     expect: Erwarte
-    raises_event: ErzeugtEvent
+    finds: Findet
     from: Von
     for_given: Fuer
-    generate: Erzeugt
     if: Wenn
     in: In
     instead_of: Statt
-    is_generated_with_correct_values: WirdMitRichtigenWertenErzeugt
-    matches: IstIdentisch
+    matches: IstIdentischMit
     persists: Persistiert
+    raises: Erzeugt
     removes: Entfernt
-    returns: Erwiedert
-    returns_null: NullErwiedert
-    should: Soll
+    returns: Erwidert
+    returns_null: ErwiedertNull
+    should: Sollte
     throws: Wirft
-    was_executed: WurdeAusgefuehrt
+    was_executed: AusgefuehrtIst
+    with_correct_values: MitRichtigenWerten
