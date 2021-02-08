@@ -101,7 +101,7 @@ class <?= $class_name; ?> extends TestCase
     {
         $id = $this-><?= $i18n["test"]["_given"]; ?><?= $entity; ?>Id();
         $this-><?= $i18n["test"]["_given"]; ?>DoctrineRepositoryFindOneBy<?= $i18n["test"]["returns_null"]; ?><?= $i18n["test"]["for_given"]; ?><?= $entity; ?>Id($id);
-        $this-><?= $i18n["test"]["_then"]; ?><?= $i18n["test"]["expect"]; ?><?= $entity; ?><?= $i18n["not_found"]; ?>Exception();
+        $this-><?= $i18n["test"]["_then"]; ?><?= $i18n["test"]["should"]; ?><?= $entity; ?><?= $i18n["not_found"]; ?>Exception<?= $i18n["test"]["be_thrown"]; ?>();
         $this-><?= $i18n["test"]["_when"]; ?>FindOneById<?= $i18n["test"]["was_executed"]; ?>($id);
     }
 
@@ -110,7 +110,7 @@ class <?= $class_name; ?> extends TestCase
         $this->doctrineRepository->findOneBy(['id' => $id->asString()])->willReturn(null);
     }
 
-    private function <?= $i18n["test"]["_then"]; ?><?= $i18n["test"]["expect"]; ?><?= $entity; ?><?= $i18n["not_found"]; ?>Exception () : void
+    private function <?= $i18n["test"]["_then"]; ?><?= $i18n["test"]["should"]; ?><?= $entity; ?><?= $i18n["not_found"]; ?>Exception<?= $i18n["test"]["be_thrown"]; ?> () : void
     {
         $this->expectException(<?= $entity; ?><?= $i18n["not_found"]; ?>Exception::class);
     }

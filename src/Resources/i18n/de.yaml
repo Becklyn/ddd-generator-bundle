@@ -19,7 +19,6 @@ test:
     by_id: DurchId
     can_be_found_by_id: KannDurchIdGefundenWerden
     cannot_be_found_by_id: KannDurchIdNichtGefundenWerden
-    expect: Erwarte
     finds: Findet
     from: Von
     for_given: Fuer
@@ -36,3 +35,4 @@ test:
     throws: Wirft
     was_executed: AusgefuehrtIst
     with_correct_values: MitRichtigenWerten
+    be_thrown: GeworfenWerden

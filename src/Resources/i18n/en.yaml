@@ -19,7 +19,6 @@ test:
     by_id: ById
     can_be_found_by_id: CanBeFoundById
     cannot_be_found_by_id: CannotBeFoundById
-    expect: Expect
     finds: Finds
     from: From
     for_given: ForPassed
@@ -36,3 +35,4 @@ test:
     throws: Throws
     was_executed: IsExecuted
     with_correct_values: WithCorrectValues
+    be_thrown: ShouldBeThrown
