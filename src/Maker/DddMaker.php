@@ -3,6 +3,7 @@
 namespace C201\DddGeneratorBundle\Maker;
 
 use C201\DddGeneratorBundle\Exception\NoSuchDomainException;
+use C201\DddGeneratorBundle\Helper\GitUserInfoFetcher;
 use Symfony\Bundle\MakerBundle\ConsoleStyle;
 use Symfony\Bundle\MakerBundle\DependencyBuilder;
 use Symfony\Bundle\MakerBundle\Maker\AbstractMaker;
@@ -20,7 +21,7 @@ use Symfony\Component\Yaml\Yaml;
  *
  * @author Pascal Gläßer <pascal.glaesser1997@gmail.com>
  *
- * @since 1.0.0 Initial Implementation
+ * @since 2021-01-27 Initial Implementation
  */
 abstract class DddMaker extends AbstractMaker
 {
@@ -118,7 +119,8 @@ abstract class DddMaker extends AbstractMaker
         }
         catch (FileLocatorFileNotFoundException $e)
         {
-            $makeDomainCmd = (new MakeDomain($this->kernel))->getCommandName();
+            $gitUserInfoFetcher = new GitUserInfoFetcher();
+            $makeDomainCmd = (new MakeDomain($this->kernel, $gitUserInfoFetcher))->getCommandName();
             throw new NoSuchDomainException(
                 "The domain \"{$domain}\" does not yet exist.\nTry generating one with \"{$makeDomainCmd}\""
             );

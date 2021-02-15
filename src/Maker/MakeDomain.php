@@ -20,7 +20,7 @@ use Symfony\Component\String\UnicodeString;
  *
  * @author Pascal Gläßer <pascal.glaesser1997@gmail.com>
  *
- * @since 1.0.0 Initial Implementation
+ * @since 2021-01-27 Initial Implementation
  */
 class MakeDomain extends DddEntityMaker
 {
@@ -40,7 +40,7 @@ class MakeDomain extends DddEntityMaker
      */
     public function generate (InputInterface $input, ConsoleStyle $io, Generator $generator) : void
     {
-        $normalizeInput = fn (string $string) => (new UnicodeString($string))->title(true)->toString();
+        $normalizeInput = fn (string $string) => (new UnicodeString($string))->camel()->title(true)->toString();
         $domain = $normalizeInput($input->getOption("domain-name"));
         $path = $this->kernel->getProjectDir() . "/src/{$domain}/domain_config.yaml";
 

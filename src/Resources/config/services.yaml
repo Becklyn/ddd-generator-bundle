@@ -4,6 +4,10 @@ services:
         exclude: '../../{DependencyInjection, Resources}'
         autowire: true
 
+    C201\DddGeneratorBundle\Helper\GitUserInfoFetcher:
+        class: 'C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
+        autowire: true
+
     C201\DddGeneratorBundle\Maker\DddMaker:
         class: 'C201\DddGeneratorBundle\Maker\DddMaker'
         abstract: true
@@ -18,5 +22,83 @@ services:
         tags:
             - maker.command
         arguments:
-          ['@kernel']
+            - '@kernel'
+            - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
+
+    C201\DddGeneratorBundle\Maker\MultiClass\MakeAggregateRoot:
+        tags:
+            - maker.command
+        arguments:
+            - '@kernel'
+            - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
+
+    C201\DddGeneratorBundle\Maker\Entity\MakeEntity:
+        tags:
+            - maker.command
+        arguments:
+            - '@kernel'
+            - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
+
+    C201\DddGeneratorBundle\Maker\Entity\MakeAggregateDoctrineRepository:
+        tags:
+            - maker.command
+        arguments:
+            - '@kernel'
+            - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
+
+    C201\DddGeneratorBundle\Maker\Entity\MakeAggregateDoctrineRepositoryTest:
+        tags:
+            - maker.command
+        arguments:
+            - '@kernel'
+            - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
+
+    C201\DddGeneratorBundle\Maker\Entity\MakeAggregateEvent:
+        tags:
+            - maker.command
+        arguments:
+            - '@kernel'
+            - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
+
+    C201\DddGeneratorBundle\Maker\Entity\MakeEntityCreatedEvent:
+        tags:
+            - maker.command
+        arguments:
+            - '@kernel'
+            - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
+
+    C201\DddGeneratorBundle\Maker\Entity\MakeEntityId:
+        tags:
+            - maker.command
+        arguments:
+            - '@kernel'
+            - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
+
+    C201\DddGeneratorBundle\Maker\Entity\MakeAggregateNotFoundException:
+        tags:
+            - maker.command
+        arguments:
+            - '@kernel'
+            - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
+
+    C201\DddGeneratorBundle\Maker\Entity\MakeAggregateRepository:
+        tags:
+            - maker.command
+        arguments:
+            - '@kernel'
+            - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
+
+    C201\DddGeneratorBundle\Maker\Entity\MakeEntityTest:
+        tags:
+            - maker.command
+        arguments:
+            - '@kernel'
+            - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
+
+    C201\DddGeneratorBundle\Maker\Entity\MakeEntityTestTrait:
+        tags:
+            - maker.command
+        arguments:
+            - '@kernel'
+            - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
 

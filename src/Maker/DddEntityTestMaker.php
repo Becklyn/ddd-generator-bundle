@@ -10,7 +10,7 @@ namespace C201\DddGeneratorBundle\Maker;
  *
  * @author Pascal Gläßer <pascal.glaesser1997@gmail.com>
  *
- * @since 1.0.0 Initial Implementation
+ * @since 2021-01-27 Initial Implementation
  */
 abstract class DddEntityTestMaker extends DddEntityMaker
 {

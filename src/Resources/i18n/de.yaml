@@ -1,0 +1,38 @@
+# Keywords that have a value that starts with lower case chars should start with _
+# example:
+# _generate: generate
+# generate: Generate
+
+_create: erzeugen
+
+created: Erzeugt
+not_found: NichtGefunden
+
+test:
+    _actual: ist
+    _expected: soll
+    _given: angenommen    # given (gherkin scheme)
+    _when: wenn           # when (gherkin scheme)
+    _then: dann         # then (gherkin scheme)
+
+    be_returned: ErwiedertWerden
+    by_id: DurchId
+    can_be_found_by_id: KannDurchIdGefundenWerden
+    cannot_be_found_by_id: KannDurchIdNichtGefundenWerden
+    finds: Findet
+    from: Von
+    for_given: Fuer
+    if: Wenn
+    in: In
+    instead_of: Statt
+    matches: IstIdentischMit
+    persists: Persistiert
+    raises: Erzeugt
+    removes: Entfernt
+    returns: Erwidert
+    returns_null: ErwiedertNull
+    should: Sollte
+    throws: Wirft
+    was_executed: AusgefuehrtIst
+    with_correct_values: MitRichtigenWerten
+    be_thrown: GeworfenWerden
