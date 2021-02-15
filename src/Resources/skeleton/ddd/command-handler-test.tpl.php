@@ -36,5 +36,5 @@ class <?= $class_name; ?> extends TestCase
         $this->fixture->setEventRegistry($this->eventRegistry->reveal());
     }
 
-    // TODO implement test cases for <?= $class_name; ?>
+    // TODO implement test cases for <?= $class_name; ?><?= "\n"; ?>
 }
