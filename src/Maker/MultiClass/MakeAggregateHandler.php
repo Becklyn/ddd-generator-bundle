@@ -2,6 +2,7 @@
 
 namespace C201\DddGeneratorBundle\Maker\MultiClass;
 
+use C201\DddGeneratorBundle\Helper\GitUserInfoFetcher;
 use C201\DddGeneratorBundle\Maker\Command\MakeCommand;
 use C201\DddGeneratorBundle\Maker\Command\MakeCommandHandler;
 use C201\DddGeneratorBundle\Maker\Command\MakeCommandHandlerTest;
@@ -32,10 +33,11 @@ class MakeAggregateHandler extends MultiClassMaker
 
     public function getMakers () : array
     {
+        $gitInfoFetcher = new GitUserInfoFetcher();
         return [
-            new MakeCommand($this->kernel),
-            new MakeCommandHandler($this->kernel),
-            new MakeCommandHandlerTest($this->kernel),
+            new MakeCommand($this->kernel, $gitInfoFetcher),
+            new MakeCommandHandler($this->kernel, $gitInfoFetcher),
+            new MakeCommandHandlerTest($this->kernel, $gitInfoFetcher),
         ];
     }
 }

@@ -4,8 +4,8 @@ namespace <?= $namespace; ?>;
 
 use <?= $psr4Root; ?>\Tests\<?= $domain; ?>\Domain\<?= $domain_namespace; ?><?= $entity; ?>TestTrait;
 use <?= $psr4Root; ?>\<?= $domain; ?>\Application\<?= $domain_namespace; ?><?= $entity; ?><?= $extra["command_action"]; ?>\<?= $entity; ?><?= $extra["command_action"]; ?>Handler;
-use C201\Ddd\Events\Domain\DomainEventTestTrait;
-use C201\Ddd\Transactions\Application\TransactionManagerTestTrait;
+use C201\Ddd\Events\Testing\DomainEventTestTrait;
+use C201\Ddd\Transactions\Testing\TransactionManagerTestTrait;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -36,5 +36,5 @@ class <?= $class_name; ?> extends TestCase
         $this->fixture->setEventRegistry($this->eventRegistry->reveal());
     }
 
-    // TODO implement test cases for
+    // TODO implement test cases for <?= $class_name; ?>
 }
