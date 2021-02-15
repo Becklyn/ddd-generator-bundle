@@ -115,9 +115,9 @@ services:
             - '@kernel'
             - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
 
-        C201\DddGeneratorBundle\Maker\Command\MakeCommandHandler:
-            tags:
-                - maker.command
-            arguments:
-                - '@kernel'
-                - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
+    C201\DddGeneratorBundle\Maker\Command\MakeCommandHandler:
+        tags:
+            - maker.command
+        arguments:
+            - '@kernel'
+            - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
