@@ -2,8 +2,8 @@
 
 namespace C201\DddGeneratorBundle\Maker\Command;
 
-use C201\Ddd\Events\Domain\DomainEventTestTrait;
-use C201\Ddd\Transactions\Application\TransactionManagerTestTrait;
+use C201\Ddd\Events\Testing\DomainEventTestTrait;
+use C201\Ddd\Transactions\Testing\TransactionManagerTestTrait;
 use C201\DddGeneratorBundle\Maker\DddEntityCommandTestMaker;
 use PHPStan\Testing\TestCase;
 
