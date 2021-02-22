@@ -34,6 +34,25 @@ class MakeCommandHandlerTest extends DddEntityCommandTestMaker
      */
     protected function getEntitySuffix (array $variables = []) : string
     {
+        // should be named ${ActionName}${EntityName}HandlerTest in english
+        // else ${EntityName}${ActionName}HandlerTest
+        if ($variables["domain_language"] == "en") {
+            return "HandlerTest";
+        }
         return $variables["extra"]["command_action"] . "HandlerTest";
+    }
+
+
+    /**
+     * @inheritDoc
+     */
+    protected function getEntityPrefix (array $variables = []) : string
+    {
+        // should be named ${ActionName}${EntityName}HandlerTest in english
+        // else ${EntityName}${ActionName}HandlerTest
+        if ($variables["domain_language"] == "en") {
+            return $variables["extra"]["command_action"];
+        }
+        return "";
     }
 }

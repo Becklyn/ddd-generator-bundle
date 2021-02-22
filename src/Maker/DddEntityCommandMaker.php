@@ -37,18 +37,28 @@ abstract class DddEntityCommandMaker extends DddEntityMaker
      */
     protected function getExtraVariables (InputInterface $input) : array
     {
+        $domain = $input->getOption('domain-name');
+        $entity = $input->getOption('entity-name');
         $actionName = new UnicodeString($input->getOption("command-action"));
-        $actionName = $actionName->lower()->title()->toString();
+        $actionName = $actionName->camel()->title()->toString();
+
+        if ($this->getDomainLanguage($domain) == "en") {
+            $commandNamespace = $actionName . $entity;
+        }
+        else {
+            $commandNamespace = $entity . $actionName;
+        }
 
         return [
             "command_action" => $actionName,
+            "command_namespace" => $commandNamespace,
         ];
     }
 
     protected function buildNamespace (string $domain, string $userProvidedNamespace, array $variables = []) : string
     {
         return $this->appendToNamespace(parent::buildNamespace($domain, $userProvidedNamespace), [
-            $variables["entity"] . $variables["extra"]["command_action"],
+            $variables['extra']['command_namespace'],
         ]);
     }
 }

@@ -100,6 +100,11 @@ abstract class DddEntityMaker extends DddMaker
         $gitUser = $this->gitUserInfoFetcher->getUserName();
         $gitEmail = $this->gitUserInfoFetcher->getUserEmail($this->kernel);
 
+        // replace values with normalized inputs (used by getExtraVariables)
+        $input->setOption('domain-name', $domainName);
+        $input->setOption('entity-name', $entityName);
+        $input->setOption('domain-namespace', $namespace);
+
         $variables = [
             "domain_namespace" => empty($namespace) ? "" : $this->normalizeNamespace($namespace, $normalizeInput) . "\\",
             "entity" => $entityName,

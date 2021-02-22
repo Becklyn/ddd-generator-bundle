@@ -3,7 +3,7 @@
 namespace <?= $namespace; ?>;
 
 use <?= $psr4Root; ?>\Tests\<?= $domain; ?>\Domain\<?= $domain_namespace; ?><?= $entity; ?>TestTrait;
-use <?= $psr4Root; ?>\<?= $domain; ?>\Application\<?= $domain_namespace; ?><?= $entity; ?><?= $extra["command_action"]; ?>\<?= $entity; ?><?= $extra["command_action"]; ?>Handler;
+use <?= $psr4Root; ?>\<?= $domain; ?>\Application\<?= $domain_namespace; ?><?= $extra["command_namespace"]; ?>\<?= $extra["command_namespace"]; ?>Handler;
 use C201\Ddd\Events\Testing\DomainEventTestTrait;
 use C201\Ddd\Transactions\Testing\TransactionManagerTestTrait;
 use PHPUnit\Framework\TestCase;
@@ -13,8 +13,8 @@ use PHPUnit\Framework\TestCase;
  *
  * @since <?= $version; ?><?= "\n"; ?>
  *
- * @covers \<?= $psr4Root; ?>\<?= $domain; ?>\Application\<?= $domain_namespace; ?><?= $entity; ?><?= $extra["command_action"]; ?>\<?= $entity; ?><?= $extra["command_action"]; ?>Command;
- * @covers \<?= $psr4Root; ?>\<?= $domain; ?>\Application\<?= $domain_namespace; ?><?= $entity; ?><?= $extra["command_action"]; ?>\<?= $entity; ?><?= $extra["command_action"]; ?>Handler;
+ * @covers \<?= $psr4Root; ?>\<?= $domain; ?>\Application\<?= $domain_namespace; ?><?= $extra["command_namespace"]; ?>\<?= $extra["command_namespace"]; ?>Command;
+ * @covers \<?= $psr4Root; ?>\<?= $domain; ?>\Application\<?= $domain_namespace; ?><?= $extra["command_namespace"]; ?>\<?= $extra["command_namespace"]; ?>Handler;
  */
 class <?= $class_name; ?> extends TestCase
 {
@@ -22,7 +22,7 @@ class <?= $class_name; ?> extends TestCase
     use TransactionManagerTestTrait;
     use DomainEventTestTrait;
 
-    private <?= $entity; ?><?= $extra["command_action"]; ?>Handler $fixture;
+    private <?= $extra["command_namespace"]; ?>Handler $fixture;
 
     protected function setUp () : void
     {
@@ -31,7 +31,7 @@ class <?= $class_name; ?> extends TestCase
         $this->initDomainEventTestTrait();
 
         // TODO inject dependencies
-        $this->fixture = new <?= $entity; ?><?= $extra["command_action"]; ?>Handler();
+        $this->fixture = new <?= $extra["command_namespace"]; ?>Handler();
         $this->fixture->setTransactionManager($this->transactionManager->reveal());
         $this->fixture->setEventRegistry($this->eventRegistry->reveal());
     }

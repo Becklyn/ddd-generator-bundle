@@ -32,6 +32,25 @@ class MakeCommandHandler extends DddEntityCommandMaker
      */
     protected function getEntitySuffix (array $variables = []) : string
     {
+        // should be named ${ActionName}${EntityName}Handler in english
+        // else ${EntityName}${ActionName}Handler
+        if ($variables["domain_language"] == "en") {
+            return "Handler";
+        }
         return $variables["extra"]["command_action"] . "Handler";
+    }
+
+
+    /**
+     * @inheritDoc
+     */
+    protected function getEntityPrefix (array $variables = []) : string
+    {
+        // should be named ${ActionName}${EntityName}Handler in english
+        // else ${EntityName}${ActionName}Handler
+        if ($variables["domain_language"] == "en") {
+            return $variables["extra"]["command_action"];
+        }
+        return "";
     }
 }

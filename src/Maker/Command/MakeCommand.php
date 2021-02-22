@@ -27,6 +27,25 @@ class MakeCommand extends DddEntityCommandMaker
      */
     protected function getEntitySuffix (array $variables = []) : string
     {
+        // should be named ${ActionName}${EntityName}Command in english
+        // else ${EntityName}${ActionName}Command
+        if ($variables["domain_language"] == "en") {
+            return "Command";
+        }
         return $variables["extra"]["command_action"] . "Command";
+    }
+
+
+    /**
+     * @inheritDoc
+     */
+    protected function getEntityPrefix (array $variables = []) : string
+    {
+        // should be named ${ActionName}${EntityName}Command in english
+        // else ${EntityName}${ActionName}Command
+        if ($variables["domain_language"] == "en") {
+            return $variables["extra"]["command_action"];
+        }
+        return "";
     }
 }

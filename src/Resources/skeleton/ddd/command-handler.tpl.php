@@ -17,13 +17,13 @@ class <?= $class_name; ?> extends CommandHandler
         // TODO inject dependencies into <?= $class_name; ?>::__construct
     }
 
-    public function handle (<?= $entity; ?><?= $extra["command_action"]; ?>Command $command) : void
+    public function handle (<?= $extra["command_namespace"]; ?>Command $command) : void
     {
         $this->handleCommand($command);
     }
 
     /**
-     * @param <?= $entity; ?><?= $extra["command_action"]; ?>Command $command
+     * @param <?= $extra["command_namespace"]; ?>Command $command
      */
     protected function execute ($command) : ?EventProvider
     {
