@@ -7,6 +7,7 @@ use <?= $psr4Root; ?>\<?= $domain; ?>\Application\<?= $domain_namespace; ?><?= $
 use Becklyn\Ddd\Events\Testing\DomainEventTestTrait;
 use Becklyn\Ddd\Transactions\Testing\TransactionManagerTestTrait;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 /**
  * @author <?= $author; ?><?= "\n"; ?>
@@ -18,6 +19,7 @@ use PHPUnit\Framework\TestCase;
  */
 class <?= $class_name; ?> extends TestCase
 {
+    use ProphecyTrait;
     use <?= $entity; ?>TestTrait;
     use TransactionManagerTestTrait;
     use DomainEventTestTrait;

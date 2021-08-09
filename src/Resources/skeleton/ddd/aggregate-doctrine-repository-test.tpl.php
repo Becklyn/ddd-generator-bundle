@@ -10,6 +10,7 @@ use <?= $psr4Root; ?>\<?= $domain; ?>\Infrastructure\Domain\<?= $domain_namespac
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectRepository;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;
 
 /**
@@ -21,6 +22,7 @@ use Prophecy\Prophecy\ObjectProphecy;
  */
 class <?= $class_name; ?> extends TestCase
 {
+    use ProphecyTrait;
     use <?= $entity; ?>TestTrait;
 
     /**
