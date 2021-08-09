@@ -7,8 +7,8 @@ use App\Wissen\Application\Baum\KnotenAktualisieren\KnotenAktualisierenCommand;
 use App\Wissen\Application\Baum\KnotenAktualisieren\KnotenAktualisierenHandler;
 use App\Wissen\Domain\Baum\Knoten;
 use App\Wissen\Domain\Baum\KnotenId;
-use C201\Ddd\Events\Domain\DomainEventTestTrait;
-use C201\Ddd\Transactions\Application\TransactionManagerTestTrait;
+use Becklyn\Ddd\Events\Testing\DomainEventTestTrait;
+use Becklyn\Ddd\Transactions\Testing\TransactionManagerTestTrait;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Prophecy\ObjectProphecy;
 

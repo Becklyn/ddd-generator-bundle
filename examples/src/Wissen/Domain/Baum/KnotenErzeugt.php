@@ -2,7 +2,7 @@
 
 namespace App\Wissen\Domain\Baum;
 
-use C201\Ddd\Events\Domain\EventId;
+use Becklyn\Ddd\Events\Domain\EventId;
 
 class KnotenErzeugt extends KnotenEvent
 {

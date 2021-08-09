@@ -2,8 +2,8 @@
 
 namespace App\Wissen\Domain\Baum;
 
-use C201\Ddd\Events\Domain\EventProvider;
-use C201\Ddd\Events\Domain\EventProviderCapabilities;
+use Becklyn\Ddd\Events\Domain\EventProvider;
+use Becklyn\Ddd\Events\Domain\EventProviderCapabilities;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
