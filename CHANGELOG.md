@@ -1,3 +1,4 @@
-1.0.0
-============
-Initial release `\o/`
+# 1.0.0
+=======
+
+*   (feature) Initial release - PHP7 branch `\o/`
