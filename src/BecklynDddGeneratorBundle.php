@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace C201\DddGeneratorBundle;
+namespace Becklyn\DddGeneratorBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -9,5 +9,5 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  *
  * @since 2021-01-27 Initial Implementation
  */
-class C201DddGeneratorBundle extends Bundle
+class BecklynDddGeneratorBundle extends Bundle
 {}

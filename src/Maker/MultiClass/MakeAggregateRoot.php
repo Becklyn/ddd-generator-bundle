@@ -1,19 +1,19 @@
 <?php declare(strict_types=1);
 
-namespace C201\DddGeneratorBundle\Maker\MultiClass;
+namespace Becklyn\DddGeneratorBundle\Maker\MultiClass;
 
-use C201\DddGeneratorBundle\Helper\GitUserInfoFetcher;
-use C201\DddGeneratorBundle\Maker\DddEntityMaker;
-use C201\DddGeneratorBundle\Maker\Entity\MakeAggregateDoctrineRepository;
-use C201\DddGeneratorBundle\Maker\Entity\MakeAggregateDoctrineRepositoryTest;
-use C201\DddGeneratorBundle\Maker\Entity\MakeAggregateEvent;
-use C201\DddGeneratorBundle\Maker\Entity\MakeAggregateNotFoundException;
-use C201\DddGeneratorBundle\Maker\Entity\MakeAggregateRepository;
-use C201\DddGeneratorBundle\Maker\Entity\MakeEntity;
-use C201\DddGeneratorBundle\Maker\Entity\MakeEntityCreatedEvent;
-use C201\DddGeneratorBundle\Maker\Entity\MakeEntityId;
-use C201\DddGeneratorBundle\Maker\Entity\MakeEntityTest;
-use C201\DddGeneratorBundle\Maker\Entity\MakeEntityTestTrait;
+use Becklyn\DddGeneratorBundle\Helper\GitUserInfoFetcher;
+use Becklyn\DddGeneratorBundle\Maker\DddEntityMaker;
+use Becklyn\DddGeneratorBundle\Maker\Entity\MakeAggregateDoctrineRepository;
+use Becklyn\DddGeneratorBundle\Maker\Entity\MakeAggregateDoctrineRepositoryTest;
+use Becklyn\DddGeneratorBundle\Maker\Entity\MakeAggregateEvent;
+use Becklyn\DddGeneratorBundle\Maker\Entity\MakeAggregateNotFoundException;
+use Becklyn\DddGeneratorBundle\Maker\Entity\MakeAggregateRepository;
+use Becklyn\DddGeneratorBundle\Maker\Entity\MakeEntity;
+use Becklyn\DddGeneratorBundle\Maker\Entity\MakeEntityCreatedEvent;
+use Becklyn\DddGeneratorBundle\Maker\Entity\MakeEntityId;
+use Becklyn\DddGeneratorBundle\Maker\Entity\MakeEntityTest;
+use Becklyn\DddGeneratorBundle\Maker\Entity\MakeEntityTestTrait;
 
 /**
  * Maker that generates every aggregate root relates files.

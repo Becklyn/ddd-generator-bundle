@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace C201\DddGeneratorBundle\Maker\Entity;
+namespace Becklyn\DddGeneratorBundle\Maker\Entity;
 
-use C201\DddGeneratorBundle\Maker\DddEntityTestMaker;
+use Becklyn\DddGeneratorBundle\Maker\DddEntityTestMaker;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectRepository;
 use PHPUnit\Framework\TestCase;

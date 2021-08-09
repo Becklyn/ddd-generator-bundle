@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace C201\DddGeneratorBundle\Helper;
+namespace Becklyn\DddGeneratorBundle\Helper;
 
 use Symfony\Component\HttpKernel\KernelInterface;
 

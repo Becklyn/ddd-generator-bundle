@@ -1,123 +1,123 @@
 services:
-    C201\DddGeneratorBundle\:
+    Becklyn\DddGeneratorBundle\:
         resource: '../../*'
         exclude: '../../{DependencyInjection, Resources}'
         autowire: true
 
-    C201\DddGeneratorBundle\Helper\GitUserInfoFetcher:
-        class: 'C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
+    Becklyn\DddGeneratorBundle\Helper\GitUserInfoFetcher:
+        class: 'Becklyn\DddGeneratorBundle\Helper\GitUserInfoFetcher'
         autowire: true
 
-    C201\DddGeneratorBundle\Maker\DddMaker:
-        class: 'C201\DddGeneratorBundle\Maker\DddMaker'
+    Becklyn\DddGeneratorBundle\Maker\DddMaker:
+        class: 'Becklyn\DddGeneratorBundle\Maker\DddMaker'
         abstract: true
         autowire: true
 
-    C201\DddGeneratorBundle\Maker\DddEntityMaker:
-        class: 'C201\DddGeneratorBundle\Maker\DddEntityMaker'
+    Becklyn\DddGeneratorBundle\Maker\DddEntityMaker:
+        class: 'Becklyn\DddGeneratorBundle\Maker\DddEntityMaker'
         abstract: true
         autowire: true
 
-    C201\DddGeneratorBundle\Maker\MakeDomain:
+    Becklyn\DddGeneratorBundle\Maker\MakeDomain:
         tags:
             - maker.command
         arguments:
             - '@kernel'
-            - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
+            - '@Becklyn\DddGeneratorBundle\Helper\GitUserInfoFetcher'
 
-    C201\DddGeneratorBundle\Maker\MultiClass\MakeAggregateRoot:
+    Becklyn\DddGeneratorBundle\Maker\MultiClass\MakeAggregateRoot:
         tags:
             - maker.command
         arguments:
             - '@kernel'
-            - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
+            - '@Becklyn\DddGeneratorBundle\Helper\GitUserInfoFetcher'
 
-    C201\DddGeneratorBundle\Maker\MultiClass\MakeAggregateHandler:
+    Becklyn\DddGeneratorBundle\Maker\MultiClass\MakeAggregateHandler:
         tags:
             - maker.command
         arguments:
             - '@kernel'
-            - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
+            - '@Becklyn\DddGeneratorBundle\Helper\GitUserInfoFetcher'
 
-    C201\DddGeneratorBundle\Maker\Entity\MakeEntity:
+    Becklyn\DddGeneratorBundle\Maker\Entity\MakeEntity:
         tags:
             - maker.command
         arguments:
             - '@kernel'
-            - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
+            - '@Becklyn\DddGeneratorBundle\Helper\GitUserInfoFetcher'
 
-    C201\DddGeneratorBundle\Maker\Entity\MakeAggregateDoctrineRepository:
+    Becklyn\DddGeneratorBundle\Maker\Entity\MakeAggregateDoctrineRepository:
         tags:
             - maker.command
         arguments:
             - '@kernel'
-            - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
+            - '@Becklyn\DddGeneratorBundle\Helper\GitUserInfoFetcher'
 
-    C201\DddGeneratorBundle\Maker\Entity\MakeAggregateDoctrineRepositoryTest:
+    Becklyn\DddGeneratorBundle\Maker\Entity\MakeAggregateDoctrineRepositoryTest:
         tags:
             - maker.command
         arguments:
             - '@kernel'
-            - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
+            - '@Becklyn\DddGeneratorBundle\Helper\GitUserInfoFetcher'
 
-    C201\DddGeneratorBundle\Maker\Entity\MakeAggregateEvent:
+    Becklyn\DddGeneratorBundle\Maker\Entity\MakeAggregateEvent:
         tags:
             - maker.command
         arguments:
             - '@kernel'
-            - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
+            - '@Becklyn\DddGeneratorBundle\Helper\GitUserInfoFetcher'
 
-    C201\DddGeneratorBundle\Maker\Entity\MakeEntityCreatedEvent:
+    Becklyn\DddGeneratorBundle\Maker\Entity\MakeEntityCreatedEvent:
         tags:
             - maker.command
         arguments:
             - '@kernel'
-            - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
+            - '@Becklyn\DddGeneratorBundle\Helper\GitUserInfoFetcher'
 
-    C201\DddGeneratorBundle\Maker\Entity\MakeEntityId:
+    Becklyn\DddGeneratorBundle\Maker\Entity\MakeEntityId:
         tags:
             - maker.command
         arguments:
             - '@kernel'
-            - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
+            - '@Becklyn\DddGeneratorBundle\Helper\GitUserInfoFetcher'
 
-    C201\DddGeneratorBundle\Maker\Entity\MakeAggregateNotFoundException:
+    Becklyn\DddGeneratorBundle\Maker\Entity\MakeAggregateNotFoundException:
         tags:
             - maker.command
         arguments:
             - '@kernel'
-            - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
+            - '@Becklyn\DddGeneratorBundle\Helper\GitUserInfoFetcher'
 
-    C201\DddGeneratorBundle\Maker\Entity\MakeAggregateRepository:
+    Becklyn\DddGeneratorBundle\Maker\Entity\MakeAggregateRepository:
         tags:
             - maker.command
         arguments:
             - '@kernel'
-            - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
+            - '@Becklyn\DddGeneratorBundle\Helper\GitUserInfoFetcher'
 
-    C201\DddGeneratorBundle\Maker\Entity\MakeEntityTest:
+    Becklyn\DddGeneratorBundle\Maker\Entity\MakeEntityTest:
         tags:
             - maker.command
         arguments:
             - '@kernel'
-            - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
+            - '@Becklyn\DddGeneratorBundle\Helper\GitUserInfoFetcher'
 
-    C201\DddGeneratorBundle\Maker\Entity\MakeEntityTestTrait:
+    Becklyn\DddGeneratorBundle\Maker\Entity\MakeEntityTestTrait:
         tags:
             - maker.command
         arguments:
             - '@kernel'
-            - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
-    C201\DddGeneratorBundle\Maker\Command\MakeCommand:
+            - '@Becklyn\DddGeneratorBundle\Helper\GitUserInfoFetcher'
+    Becklyn\DddGeneratorBundle\Maker\Command\MakeCommand:
         tags:
             - maker.command
         arguments:
             - '@kernel'
-            - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
+            - '@Becklyn\DddGeneratorBundle\Helper\GitUserInfoFetcher'
 
-    C201\DddGeneratorBundle\Maker\Command\MakeCommandHandler:
+    Becklyn\DddGeneratorBundle\Maker\Command\MakeCommandHandler:
         tags:
             - maker.command
         arguments:
             - '@kernel'
-            - '@C201\DddGeneratorBundle\Helper\GitUserInfoFetcher'
+            - '@Becklyn\DddGeneratorBundle\Helper\GitUserInfoFetcher'

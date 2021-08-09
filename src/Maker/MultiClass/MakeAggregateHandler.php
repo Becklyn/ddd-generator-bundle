@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace C201\DddGeneratorBundle\Maker\MultiClass;
+namespace Becklyn\DddGeneratorBundle\Maker\MultiClass;
 
-use C201\DddGeneratorBundle\Helper\GitUserInfoFetcher;
-use C201\DddGeneratorBundle\Maker\Command\MakeCommand;
-use C201\DddGeneratorBundle\Maker\Command\MakeCommandHandler;
-use C201\DddGeneratorBundle\Maker\Command\MakeCommandHandlerTest;
+use Becklyn\DddGeneratorBundle\Helper\GitUserInfoFetcher;
+use Becklyn\DddGeneratorBundle\Maker\Command\MakeCommand;
+use Becklyn\DddGeneratorBundle\Maker\Command\MakeCommandHandler;
+use Becklyn\DddGeneratorBundle\Maker\Command\MakeCommandHandlerTest;
 use Symfony\Bundle\MakerBundle\InputConfiguration;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputOption;

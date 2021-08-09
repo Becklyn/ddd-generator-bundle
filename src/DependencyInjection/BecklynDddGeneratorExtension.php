@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace C201\DddGeneratorBundle\DependencyInjection;
+namespace Becklyn\DddGeneratorBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
  *
  * @since 2021-01-27 Initial Implementation
  */
-class C201DddGeneratorExtension extends Extension
+class BecklynDddGeneratorExtension extends Extension
 {
     public function load (array $configs, ContainerBuilder $container) : void
     {

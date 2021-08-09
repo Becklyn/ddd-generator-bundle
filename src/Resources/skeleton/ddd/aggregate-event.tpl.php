@@ -2,8 +2,8 @@
 
 namespace <?= $namespace; ?>;
 
-use C201\Ddd\Events\Domain\AbstractDomainEvent;
-use C201\Ddd\Events\Domain\EventId;
+use Becklyn\Ddd\Events\Domain\AbstractDomainEvent;
+use Becklyn\Ddd\Events\Domain\EventId;
 
 /**
  * @author <?= $author; ?><?= "\n"; ?>

@@ -4,8 +4,8 @@ namespace <?= $namespace; ?>;
 
 use <?= $psr4Root; ?>\Tests\<?= $domain; ?>\Domain\<?= $domain_namespace; ?><?= $entity; ?>TestTrait;
 use <?= $psr4Root; ?>\<?= $domain; ?>\Application\<?= $domain_namespace; ?><?= $extra["command_namespace"]; ?>\<?= $extra["command_namespace"]; ?>Handler;
-use C201\Ddd\Events\Testing\DomainEventTestTrait;
-use C201\Ddd\Transactions\Testing\TransactionManagerTestTrait;
+use Becklyn\Ddd\Events\Testing\DomainEventTestTrait;
+use Becklyn\Ddd\Transactions\Testing\TransactionManagerTestTrait;
 use PHPUnit\Framework\TestCase;
 
 /**

@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace C201\DddGeneratorBundle\Exception;
+namespace Becklyn\DddGeneratorBundle\Exception;
 
 /**
  * Exception indicating that a domain was not (yet) created

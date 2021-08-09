@@ -1,13 +1,12 @@
 {
-    "name": "201created/ddd-generator-bundle",
+    "name": "becklyn/ddd-generator-bundle",
     "type": "symfony-bundle",
-    "description": "Code generator for common Domain Driven Design patterns in the 201Created DDD framework.",
+    "description": "Code generator for common Domain Driven Design patterns in the Becklyn DDD framework.",
     "keywords": [
         "ddd",
         "domain driven design",
         "code generation"
     ],
-    "version": "1.0",
     "license": "proprietary",
     "authors": [
         {
@@ -22,7 +21,7 @@
     },
     "require-dev": {
         "php": ">=7.4",
-        "201created/ddd-core": "1.0.0",
+        "becklyn/ddd-core": "^1.0",
         "doctrine/orm": "^2.8",
         "gedmo/doctrine-extensions": "^3.0",
         "phpspec/prophecy": "^1.12",
@@ -41,19 +40,9 @@
     },
     "autoload": {
         "psr-4": {
-            "C201\\DddGeneratorBundle\\": "src/"
+            "Becklyn\\DddGeneratorBundle\\": "src/"
         }
     },
-    "repositories": [
-        {
-            "type": "github",
-            "url": "https://github.com/201created-gmbh/ddd-core"
-        },
-        {
-            "type": "github",
-            "url": "https://github.com/201CREATED-GmbH/support"
-        }
-    ],
     "scripts": {
         "auto-scripts": {}
     }

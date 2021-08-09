@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace C201\DddGeneratorBundle\Maker\Entity;
+namespace Becklyn\DddGeneratorBundle\Maker\Entity;
 
-use C201\Ddd\Identity\Domain\AbstractAggregateId;
-use C201\DddGeneratorBundle\Maker\DddEntityMaker;
+use Becklyn\Ddd\Identity\Domain\AbstractAggregateId;
+use Becklyn\DddGeneratorBundle\Maker\DddEntityMaker;
 
 /**
  * Maker that generates a Domain-Driven-Design EntityId.
@@ -39,7 +39,7 @@ class MakeEntityId extends DddEntityMaker
     protected function getDependencies () : array
     {
         return [
-            AbstractAggregateId::class => '201created/ddd',
+            AbstractAggregateId::class => 'becklyn/ddd-core',
         ];
     }
 }

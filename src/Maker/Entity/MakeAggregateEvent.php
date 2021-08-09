@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace C201\DddGeneratorBundle\Maker\Entity;
+namespace Becklyn\DddGeneratorBundle\Maker\Entity;
 
-use C201\Ddd\Events\Domain\AbstractDomainEvent;
-use C201\Ddd\Events\Domain\EventId;
-use C201\DddGeneratorBundle\Maker\DddEntityMaker;
+use Becklyn\Ddd\Events\Domain\AbstractDomainEvent;
+use Becklyn\Ddd\Events\Domain\EventId;
+use Becklyn\DddGeneratorBundle\Maker\DddEntityMaker;
 
 /**
  * Maker that generates a Domain-Driven-Design EntityEvent.
@@ -40,8 +40,8 @@ class MakeAggregateEvent extends DddEntityMaker
     protected function getDependencies () : array
     {
         return [
-            EventId::class => '201created/ddd',
-            AbstractDomainEvent::class => '201created/ddd',
+            EventId::class => 'becklyn/ddd-core',
+            AbstractDomainEvent::class => 'becklyn/ddd-core',
         ];
     }
 }

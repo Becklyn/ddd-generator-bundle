@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace C201\DddGeneratorBundle\Maker;
+namespace Becklyn\DddGeneratorBundle\Maker;
 
 /**
  * Abstract Maker that provides base functionality for generating Domain-Driven-Design Entity-related test classes.

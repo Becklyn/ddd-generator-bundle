@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace C201\DddGeneratorBundle\Maker\MultiClass;
+namespace Becklyn\DddGeneratorBundle\Maker\MultiClass;
 
 use Symfony\Bundle\MakerBundle\Maker\AbstractMaker;
 

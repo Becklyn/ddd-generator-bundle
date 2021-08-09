@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace C201\DddGeneratorBundle\Maker\Command;
+namespace Becklyn\DddGeneratorBundle\Maker\Command;
 
-use C201\Ddd\Commands\Application\CommandHandler;
-use C201\Ddd\Events\Domain\EventProvider;
-use C201\DddGeneratorBundle\Maker\DddEntityCommandMaker;
+use Becklyn\Ddd\Commands\Application\CommandHandler;
+use Becklyn\Ddd\Events\Domain\EventProvider;
+use Becklyn\DddGeneratorBundle\Maker\DddEntityCommandMaker;
 
 class MakeCommandHandler extends DddEntityCommandMaker
 {
@@ -22,8 +22,8 @@ class MakeCommandHandler extends DddEntityCommandMaker
     protected function getDependencies () : array
     {
         return [
-            CommandHandler::class => "201created/ddd",
-            EventProvider::class => "201created/ddd",
+            CommandHandler::class => "becklyn/ddd-core",
+            EventProvider::class => "becklyn/ddd-core",
         ];
     }
 

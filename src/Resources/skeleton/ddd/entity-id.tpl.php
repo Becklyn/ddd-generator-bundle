@@ -2,7 +2,7 @@
 
 namespace <?= $namespace; ?>;
 
-use C201\Ddd\Identity\Domain\AbstractAggregateId;
+use Becklyn\Ddd\Identity\Domain\AbstractAggregateId;
 
 /**
  * @author <?= $author; ?><?= "\n"; ?>

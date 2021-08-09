@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace C201\DddGeneratorBundle\Maker\Command;
+namespace Becklyn\DddGeneratorBundle\Maker\Command;
 
-use C201\DddGeneratorBundle\Maker\DddEntityCommandMaker;
+use Becklyn\DddGeneratorBundle\Maker\DddEntityCommandMaker;
 
 class MakeCommand extends DddEntityCommandMaker
 {

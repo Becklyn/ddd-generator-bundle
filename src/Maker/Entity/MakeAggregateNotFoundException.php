@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace C201\DddGeneratorBundle\Maker\Entity;
+namespace Becklyn\DddGeneratorBundle\Maker\Entity;
 
-use C201\DddGeneratorBundle\Exception\NoSuchDomainException;
-use C201\DddGeneratorBundle\Maker\DddEntityMaker;
+use Becklyn\DddGeneratorBundle\Exception\NoSuchDomainException;
+use Becklyn\DddGeneratorBundle\Maker\DddEntityMaker;
 
 /**
  * Maker that generates a Domain-Driven-Design EntityNotFoundException class.

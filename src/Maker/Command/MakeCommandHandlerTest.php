@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace C201\DddGeneratorBundle\Maker\Command;
+namespace Becklyn\DddGeneratorBundle\Maker\Command;
 
-use C201\Ddd\Events\Testing\DomainEventTestTrait;
-use C201\Ddd\Transactions\Testing\TransactionManagerTestTrait;
-use C201\DddGeneratorBundle\Maker\DddEntityCommandTestMaker;
+use Becklyn\Ddd\Events\Testing\DomainEventTestTrait;
+use Becklyn\Ddd\Transactions\Testing\TransactionManagerTestTrait;
+use Becklyn\DddGeneratorBundle\Maker\DddEntityCommandTestMaker;
 use PHPStan\Testing\TestCase;
 
 class MakeCommandHandlerTest extends DddEntityCommandTestMaker
@@ -23,8 +23,8 @@ class MakeCommandHandlerTest extends DddEntityCommandTestMaker
     protected function getDependencies () : array
     {
         return [
-            DomainEventTestTrait::class => "201created/ddd",
-            TransactionManagerTestTrait::class => "201created/ddd",
+            DomainEventTestTrait::class => "becklyn/ddd-core",
+            TransactionManagerTestTrait::class => "becklyn/ddd-core",
             TestCase::class => "phpunit/phpunit",
         ];
     }

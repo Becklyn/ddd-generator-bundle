@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace C201\DddGeneratorBundle\Maker;
+namespace Becklyn\DddGeneratorBundle\Maker;
 
-use C201\DddGeneratorBundle\Exception\NoSuchDomainException;
-use C201\DddGeneratorBundle\Helper\GitUserInfoFetcher;
+use Becklyn\DddGeneratorBundle\Exception\NoSuchDomainException;
+use Becklyn\DddGeneratorBundle\Helper\GitUserInfoFetcher;
 use Symfony\Bundle\MakerBundle\ConsoleStyle;
 use Symfony\Bundle\MakerBundle\DependencyBuilder;
 use Symfony\Bundle\MakerBundle\Maker\AbstractMaker;

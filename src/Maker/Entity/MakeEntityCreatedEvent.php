@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace C201\DddGeneratorBundle\Maker\Entity;
+namespace Becklyn\DddGeneratorBundle\Maker\Entity;
 
-use C201\Ddd\Events\Domain\EventId;
-use C201\DddGeneratorBundle\Exception\NoSuchDomainException;
-use C201\DddGeneratorBundle\Maker\DddEntityMaker;
+use Becklyn\Ddd\Events\Domain\EventId;
+use Becklyn\DddGeneratorBundle\Exception\NoSuchDomainException;
+use Becklyn\DddGeneratorBundle\Maker\DddEntityMaker;
 
 /**
  * Maker that generates a Domain-Driven-Design EntityGeneratedEvent class.
@@ -43,7 +43,7 @@ class MakeEntityCreatedEvent extends DddEntityMaker
     protected function getDependencies () : array
     {
         return [
-            EventId::class => '201created/ddd',
+            EventId::class => 'becklyn/ddd-core',
         ];
     }
 }
