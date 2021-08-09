@@ -23,7 +23,6 @@
         "php": ">=7.4",
         "becklyn/ddd-core": "^1.0",
         "doctrine/orm": "^2.8",
-        "gedmo/doctrine-extensions": "^3.0",
         "phpspec/prophecy": "^1.12",
         "phpunit/phpunit": "^9.5",
         "roave/security-advisories": "dev-master",

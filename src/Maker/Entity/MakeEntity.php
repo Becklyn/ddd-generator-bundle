@@ -5,7 +5,6 @@ namespace Becklyn\DddGeneratorBundle\Maker\Entity;
 use Becklyn\DddGeneratorBundle\Maker\DddEntityMaker;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\GeneratedValue;
-use Gedmo\Mapping\Annotation\Timestampable;
 
 /**
  * Maker that generates a Domain-Driven-Design Entity class.
@@ -33,7 +32,6 @@ class MakeEntity extends DddEntityMaker
     protected function getDependencies () : array
     {
         return [
-            Timestampable::class => 'gedmo/doctrine-extensions',
             Column::class => 'doctrine/orm',
             GeneratedValue::class => 'doctrine/orm',
         ];

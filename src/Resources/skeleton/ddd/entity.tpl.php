@@ -5,7 +5,6 @@ namespace <?= $namespace; ?>;
 use Becklyn\Ddd\Events\Domain\EventProvider;
 use Becklyn\Ddd\Events\Domain\EventProviderCapabilities;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @author <?= $author; ?><?= "\n"; ?>
@@ -33,16 +32,14 @@ class <?= $class_name; ?> implements EventProvider
     private string $id;
 
     /**
-     * @ORM\Column(type="datetime_immutable", nullable=false)
-     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime_immutable", nullable=false, columnDefinition="DATETIME(6) NOT NULL COMMENT '(DC2Type:datetime_immutable)' DEFAULT CURRENT_TIMESTAMP(6)")
      */
-    private ?\DateTimeImmutable $createdTs = null;
+    private \DateTimeImmutable $createdTs;
 
     /**
-     * @ORM\Column(type="datetime_immutable", nullable=false)
-     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime_immutable", nullable=false, columnDefinition="DATETIME(6) NOT NULL COMMENT '(DC2Type:datetime_immutable)' DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)")
      */
-    private ?\DateTimeImmutable $updatedTs = null;
+    private \DateTimeImmutable $updatedTs;
 
     /**
      * Factory method that generates a new entity and raises a event if the entity was created.
