@@ -19,7 +19,7 @@ class <?= $class_name; ?> extends TestCase
 {
     use <?= $entity; ?>TestTrait;
 
-    public function testCreate<?=$i18n['test']['returns']?><?= $entity; ?><?= $i18n["test"]["with_correct_values"]; ?> () : void
+    public function testCreate<?=$i18n['test']['returns']; ?><?= $entity; ?><?= $i18n["test"]["with_correct_values"]; ?> () : void
     {
         $id = $this-><?= $i18n["test"]["_given"]; ?><?= $entity; ?>Id();
         // TODO implement additional properties

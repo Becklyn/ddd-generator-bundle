@@ -34,7 +34,7 @@ class MakeCommandHandler extends DddEntityCommandMaker
     {
         // should be named ${ActionName}${EntityName}Handler in english
         // else ${EntityName}${ActionName}Handler
-        if ($variables["domain_language"] == "en") {
+        if ("en" === $this->getDomainLanguage($variables["domain"])) {
             return "Handler";
         }
         return $variables["extra"]["command_action"] . "Handler";
@@ -48,7 +48,7 @@ class MakeCommandHandler extends DddEntityCommandMaker
     {
         // should be named ${ActionName}${EntityName}Handler in english
         // else ${EntityName}${ActionName}Handler
-        if ($variables["domain_language"] == "en") {
+        if ("en" === $this->getDomainLanguage($variables["domain"])) {
             return $variables["extra"]["command_action"];
         }
         return "";

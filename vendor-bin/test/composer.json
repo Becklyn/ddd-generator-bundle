@@ -1,5 +1,5 @@
 {
     "require-dev": {
-        "becklyn/php-cs": "^3"
+        "becklyn/php-cs": "^13.0"
     }
 }
