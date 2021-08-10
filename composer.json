@@ -7,7 +7,7 @@
         "domain driven design",
         "code generation"
     ],
-    "license": "proprietary",
+    "license": "MIT",
     "authors": [
         {
             "name": "Pascal Gläßer",
