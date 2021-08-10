@@ -34,7 +34,7 @@ trait <?= $class_name; ?><?= "\n"; ?>
         return $<?= $strtocamel($entity); ?>;
     }
 
-    protected function <?= $i18n["test"]["_given"]; ?><?= $entity; ?>Id<?= $i18n["test"]["matches"]; ?> (ObjectProphecy|<?= $entity; ?> $<?= $strtocamel($entity); ?><?= "\n"; ?> $<?= $strtocamel($entity); ?>, <?= $entity; ?>Id $id) : void
+    protected function <?= $i18n["test"]["_given"]; ?><?= $entity; ?>Id<?= $i18n["test"]["matches"]; ?> (ObjectProphecy|<?= $entity; ?> $<?= $strtocamel($entity); ?>, <?= $entity; ?>Id $id) : void
     {
         $<?= $strtocamel($entity); ?>->id()->willReturn($id);
     }

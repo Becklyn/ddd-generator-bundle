@@ -16,7 +16,7 @@ abstract class <?= $class_name; ?> extends AbstractDomainEvent
         EventId $id,
         \DateTimeImmutable $raisedTs,
         protected <?= $entity; ?>Id $<?= $strtocamel($entity); ?>Id,
-    ){
+    ) {
         parent::__construct($id, $raisedTs);
     }
 
