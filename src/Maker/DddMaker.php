@@ -25,12 +25,8 @@ use Symfony\Component\Yaml\Yaml;
  */
 abstract class DddMaker extends AbstractMaker
 {
-    protected KernelInterface $kernel;
-
-    public function __construct (KernelInterface $kernel)
-    {
-        $this->kernel = $kernel;
-    }
+    public function __construct (protected KernelInterface $kernel)
+    {}
 
     /**
      * @inheritDoc

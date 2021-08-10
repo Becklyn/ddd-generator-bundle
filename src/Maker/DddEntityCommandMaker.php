@@ -42,7 +42,7 @@ abstract class DddEntityCommandMaker extends DddEntityMaker
         $actionName = new UnicodeString($input->getOption("command-action"));
         $actionName = $actionName->camel()->title()->toString();
 
-        if ($this->getDomainLanguage($domain) == "en") {
+        if ("en" === $this->getDomainLanguage($domain)) {
             $commandNamespace = $actionName . $entity;
         }
         else {

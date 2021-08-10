@@ -7,12 +7,12 @@ use Becklyn\Ddd\Events\Domain\EventId;
 
 class KnotenEvent extends AbstractDomainEvent
 {
-    protected KnotenId $knotenId;
-
-    public function __construct(EventId $id, \DateTimeImmutable $raisedTs, KnotenId $knotenId)
-    {
+    public function __construct(
+        EventId $id,
+        \DateTimeImmutable $raisedTs,
+        protected KnotenId $knotenId
+    ) {
         parent::__construct($id, $raisedTs);
-        $this->knotenId = $knotenId;
     }
 
     public function aggregateId(): KnotenId

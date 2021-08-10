@@ -15,10 +15,7 @@ use Prophecy\Prophecy\ObjectProphecy;
  */
 trait <?= $class_name; ?><?= "\n"; ?>
 {
-    /**
-     * @var ObjectProphecy|<?= $entity; ?>Repository
-     */
-    protected ObjectProphecy $<?= $strtocamel($entity); ?>Repository;
+    protected ObjectProphecy|<?= $entity; ?>Repository $<?= $strtocamel($entity); ?>Repository;
 
     protected function init<?= $entity; ?>TestTrait () : void
     {
@@ -30,28 +27,19 @@ trait <?= $class_name; ?><?= "\n"; ?>
         return <?= $entity; ?>Id::next();
     }
 
-    /**
-     * @return ObjectProphecy|<?= $entity; ?><?= "\n"; ?>
-     */
-    protected function <?= $i18n["test"]["_given"]; ?><?= $entity; ?> () : ObjectProphecy
+    protected function <?= $i18n["test"]["_given"]; ?><?= $entity; ?> () : ObjectProphecy|<?= $entity; ?><?= "\n"; ?>
     {
         /** @var ObjectProphecy|<?= $entity; ?> $<?= $strtocamel($entity); ?> */
         $<?= $strtocamel($entity); ?> = $this->prophesize(<?= $entity; ?>::class);
         return $<?= $strtocamel($entity); ?>;
     }
 
-    /**
-     * @param ObjectProphecy|<?= $entity; ?> $<?= $strtocamel($entity); ?><?= "\n"; ?>
-     */
-    protected function <?= $i18n["test"]["_given"]; ?><?= $entity; ?>Id<?= $i18n["test"]["matches"]; ?> (ObjectProphecy $<?= $strtocamel($entity); ?>, <?= $entity; ?>Id $id) : void
+    protected function <?= $i18n["test"]["_given"]; ?><?= $entity; ?>Id<?= $i18n["test"]["matches"]; ?> (ObjectProphecy|<?= $entity; ?> $<?= $strtocamel($entity); ?><?= "\n"; ?> $<?= $strtocamel($entity); ?>, <?= $entity; ?>Id $id) : void
     {
         $<?= $strtocamel($entity); ?>->id()->willReturn($id);
     }
 
-    /**
-     * @return ObjectProphecy|<?= $entity; ?><?= "\n"; ?>
-     */
-    protected function <?= $i18n["test"]["_given"]; ?><?= $entity; ?><?= $i18n["test"]["can_be_found_by_id"]; ?> (<?= $entity; ?>Id $<?= $strtocamel($entity); ?>Id) : ObjectProphecy
+    protected function <?= $i18n["test"]["_given"]; ?><?= $entity; ?><?= $i18n["test"]["can_be_found_by_id"]; ?> (<?= $entity; ?>Id $<?= $strtocamel($entity); ?>Id) : ObjectProphecy|<?= $entity; ?><?= "\n"; ?>
     {
         $<?= $strtocamel($entity); ?> = $this-><?= $i18n["test"]["_given"]; ?><?= $entity; ?>();
         $this-><?= $i18n["test"]["_given"]; ?><?= $entity; ?>Id<?= $i18n["test"]["matches"]; ?>($<?= $strtocamel($entity); ?>, $<?= $strtocamel($entity); ?>Id);

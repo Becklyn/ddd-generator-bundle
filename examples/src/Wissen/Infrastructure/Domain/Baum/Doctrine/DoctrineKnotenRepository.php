@@ -37,7 +37,7 @@ class DoctrineKnotenRepository implements KnotenRepository
 
     public function findOneById(KnotenId $knotenId): Knoten
     {
-        /** @var Knoten $knoten */
+        /** @var ?Knoten $knoten */
         $knoten = $this->repository->findOneBy(['id' => $knotenId->asString()]);
         if ($knoten === null) {
             throw new KnotenNichtGefundenException("Knoten '{$knotenId->asString()}' konnte nicht gefunden werden");

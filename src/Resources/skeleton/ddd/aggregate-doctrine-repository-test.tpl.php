@@ -25,15 +25,8 @@ class <?= $class_name; ?> extends TestCase
     use ProphecyTrait;
     use <?= $entity; ?>TestTrait;
 
-    /**
-     * @var ObjectProphecy|EntityManagerInterface
-     */
-    private ObjectProphecy $em;
-
-    /**
-     * @var ObjectProphecy|ObjectRepository
-     */
-    private ObjectProphecy $doctrineRepository;
+    private ObjectProphecy|EntityManagerInterface $em;
+    private ObjectProphecy|ObjectRepository $doctrineRepository;
 
     private Doctrine<?= $entity; ?>Repository $fixture;
 
@@ -76,10 +69,7 @@ class <?= $class_name; ?> extends TestCase
         );
     }
 
-    /**
-     * @return ObjectProphecy|<?= $entity; ?><?= "\n"; ?>
-     */
-    private function <?= $i18n["test"]["_given"]; ?>DoctrineRepository<?= $i18n["test"]["finds"]; ?><?= $entity; ?><?= $i18n["test"]["by_id"]; ?> (<?= $entity; ?>Id $id) : ObjectProphecy
+    private function <?= $i18n["test"]["_given"]; ?>DoctrineRepository<?= $i18n["test"]["finds"]; ?><?= $entity; ?><?= $i18n["test"]["by_id"]; ?> (<?= $entity; ?>Id $id) : ObjectProphecy|<?= $entity; ?><?= "\n"; ?>
     {
         /** @var <?= $entity; ?> $<?= $strtocamel($entity); ?> */
         $<?= $strtocamel($entity); ?> = $this->prophesize(<?= $entity; ?>::class);

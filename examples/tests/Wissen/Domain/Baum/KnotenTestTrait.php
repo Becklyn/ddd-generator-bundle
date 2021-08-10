@@ -14,10 +14,7 @@ use Prophecy\Prophecy\ObjectProphecy;
  */
 trait KnotenTestTrait
 {
-    /**
-     * @var ObjectProphecy|KnotenRepository
-     */
-    protected ObjectProphecy $knotenRepository;
+    protected ObjectProphecy|KnotenRepository $knotenRepository;
 
     protected function initKnotenTestTrait(): void
     {
@@ -29,28 +26,19 @@ trait KnotenTestTrait
         return KnotenId::next();
     }
 
-    /**
-     * @return ObjectProphecy|Knoten
-     */
-    protected function angenommenEinKnoten(): ObjectProphecy
+    protected function angenommenEinKnoten(): ObjectProphecy|Knoten
     {
         /** @var ObjectProphecy|Knoten $knoten */
         $knoten = $this->prophesize(Knoten::class);
         return $knoten;
     }
 
-    /**
-     * @param ObjectProphecy|Knoten $knoten
-     */
-    protected function angenommenKnotenHatId(ObjectProphecy $knoten, KnotenId $id): void
+    protected function angenommenKnotenHatId(ObjectProphecy|Knoten $knoten, KnotenId $id): void
     {
         $knoten->id()->willReturn($id);
     }
 
-    /**
-     * @return ObjectProphecy|Knoten
-     */
-    protected function angenommenEinKnotenKannDurchIdGefundenWerden(KnotenId $knotenId): ObjectProphecy
+    protected function angenommenEinKnotenKannDurchIdGefundenWerden(KnotenId $knotenId): ObjectProphecy|Knoten
     {
         $knoten = $this->angenommenEinKnoten();
         $this->angenommenKnotenHatId($knoten, $knotenId);

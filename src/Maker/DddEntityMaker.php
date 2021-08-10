@@ -25,17 +25,17 @@ use Symfony\Component\String\UnicodeString;
 abstract class DddEntityMaker extends DddMaker
 {
     protected string $layer = "Domain";
-    private GitUserInfoFetcher $gitUserInfoFetcher;
 
     /**
      * Returns the description of the command.
      */
     abstract protected function getDescription () : string;
 
-    public function __construct (KernelInterface $kernel, GitUserInfoFetcher $gitUserInfoFetcher)
-    {
+    public function __construct (
+        KernelInterface $kernel,
+        private GitUserInfoFetcher $gitUserInfoFetcher
+    ) {
         parent::__construct($kernel);
-        $this->gitUserInfoFetcher = $gitUserInfoFetcher;
     }
 
     /**

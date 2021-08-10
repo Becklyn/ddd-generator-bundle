@@ -36,7 +36,7 @@ class MakeCommandHandlerTest extends DddEntityCommandTestMaker
     {
         // should be named ${ActionName}${EntityName}HandlerTest in english
         // else ${EntityName}${ActionName}HandlerTest
-        if ($variables["domain_language"] == "en") {
+        if ("en" === $this->getDomainLanguage($variables["domain"])) {
             return "HandlerTest";
         }
         return $variables["extra"]["command_action"] . "HandlerTest";
@@ -50,7 +50,7 @@ class MakeCommandHandlerTest extends DddEntityCommandTestMaker
     {
         // should be named ${ActionName}${EntityName}HandlerTest in english
         // else ${EntityName}${ActionName}HandlerTest
-        if ($variables["domain_language"] == "en") {
+        if ("en" === $this->getDomainLanguage($variables["domain"])) {
             return $variables["extra"]["command_action"];
         }
         return "";

@@ -16,7 +16,7 @@ use Symfony\Component\HttpKernel\KernelInterface;
  * @internal This class should only be used internally and never be extended. This is for security reasons because this
  *     class uses the possibly dangerous shell_exec to fetch the information from git.
  */
-class GitUserInfoFetcher
+final class GitUserInfoFetcher
 {
     private const FETCH_NAME_COMMAND = "git config user.name";
     private const FETCH_EMAIL_COMMAND = "git config user.email";

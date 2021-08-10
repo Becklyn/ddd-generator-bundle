@@ -9,10 +9,11 @@ class KnotenErzeugt extends KnotenEvent
     public function __construct(
         EventId $id,
         \DateTimeImmutable $raisedTs,
-        KnotenId $knotenId
+        KnotenId $knotenId,
+        // TODO add additional properties
     ) {
         parent::__construct($id, $raisedTs, $knotenId);
-
-        // TODO add additional properties
     }
+
+    // TODO add getters for additional properties
 }

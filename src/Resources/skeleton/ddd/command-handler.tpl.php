@@ -12,10 +12,9 @@ use Becklyn\Ddd\Events\Domain\EventProvider;
  */
 class <?= $class_name; ?> extends CommandHandler
 {
-    public function __construct ()
-    {
+    public function __construct (
         // TODO inject dependencies into <?= $class_name; ?>::__construct
-    }
+    ) {}
 
     public function handle (<?= $extra["command_namespace"]; ?>Command $command) : void
     {

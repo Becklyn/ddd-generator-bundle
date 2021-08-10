@@ -6,14 +6,10 @@ use App\Wissen\Domain\Baum\KnotenId;
 
 class KnotenAktualisierenCommand
 {
-    private KnotenId $knotenId;
-
-    public function __construct(KnotenId $knotenId)
-    {
-        $this->knotenId = $knotenId;
-
+    public function __construct(
+        private KnotenId $knotenId,
         // TODO add additional properties
-    }
+    ) {}
 
     public function knotenId(): KnotenId
     {

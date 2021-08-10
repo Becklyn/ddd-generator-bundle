@@ -22,15 +22,8 @@ class DoctrineKnotenRepositoryTest extends TestCase
 {
     use KnotenTestTrait;
 
-    /**
-     * @var ObjectProphecy|EntityManagerInterface
-     */
-    private ObjectProphecy $em;
-
-    /**
-     * @var ObjectProphecy|ObjectRepository
-     */
-    private ObjectProphecy $doctrineRepository;
+    private ObjectProphecy|EntityManagerInterface $em;
+    private ObjectProphecy|ObjectRepository $doctrineRepository;
 
     private DoctrineKnotenRepository $fixture;
 
@@ -73,10 +66,7 @@ class DoctrineKnotenRepositoryTest extends TestCase
         );
     }
 
-    /**
-     * @return ObjectProphecy|Knoten
-     */
-    private function angenommenDoctrineRepositoryFindetEinKnotenDurchId(KnotenId $id): ObjectProphecy
+    private function angenommenDoctrineRepositoryFindetEinKnotenDurchId(KnotenId $id): ObjectProphecy|Knoten
     {
         /** @var Knoten $knoten */
         $knoten = $this->prophesize(Knoten::class);

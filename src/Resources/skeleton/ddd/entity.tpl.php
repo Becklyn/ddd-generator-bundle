@@ -10,35 +10,26 @@ use Doctrine\ORM\Mapping as ORM;
  * @author <?= $author; ?><?= "\n"; ?>
  *
  * @since <?= $version; ?><?= "\n"; ?>
- *
- * @ORM\Entity
- * @ORM\Table(name="<?= $strtosnake($domain); ?>_<?= $strtosnake($entity); ?>s")
- * @todo Check table name "<?= $strtosnake($domain); ?>_<?= $strtosnake($entity); ?>s" for grammar.
  */
+#[Orm\Entity]
+#[Orm\Table(name: "<?= $strtosnake($domain); ?>_<?= $strtosnake($entity); ?>s")]
+// @todo Check table name "<?= $strtosnake($domain); ?>_<?= $strtosnake($entity); ?>s" for grammar.
 class <?= $class_name; ?> implements EventProvider
 {
     use EventProviderCapabilities;
 
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer", name="id", options={"unsigned":true})
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(name: "id", type: "integer", options: ["unsigned" => true])]
     private ?int $internalId = null;
 
-    /**
-     * @ORM\Column(type="string", unique=true, length=36, nullable=false, name="uuid")
-     */
+    #[ORM\Column(name: "uuid", type: "string", length: 36, unique: true, nullable: false)]
     private string $id;
 
-    /**
-     * @ORM\Column(type="datetime_immutable", nullable=false, columnDefinition="DATETIME(6) NOT NULL COMMENT '(DC2Type:datetime_immutable)' DEFAULT CURRENT_TIMESTAMP(6)")
-     */
+    #[ORM\Column(type: "datetime_immutable", nullable: false, columnDefinition: "DATETIME(6) NOT NULL COMMENT '(DC2Type:datetime_immutable)' DEFAULT CURRENT_TIMESTAMP(6)")]
     private \DateTimeImmutable $createdTs;
 
-    /**
-     * @ORM\Column(type="datetime_immutable", nullable=false, columnDefinition="DATETIME(6) NOT NULL COMMENT '(DC2Type:datetime_immutable)' DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)")
-     */
+    #[ORM\Column(type: "datetime_immutable", nullable: false, columnDefinition: "DATETIME(6) NOT NULL COMMENT '(DC2Type:datetime_immutable)' DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)")]
     private \DateTimeImmutable $updatedTs;
 
     /**

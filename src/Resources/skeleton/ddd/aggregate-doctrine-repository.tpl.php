@@ -42,7 +42,7 @@ class <?= $class_name; ?> implements <?= $entity; ?>Repository
 
     public function findOneById (<?= $entity; ?>Id $<?= $strtocamel($entity); ?>Id) : <?= $entity; ?><?= "\n"; ?>
     {
-        /** @var <?= $entity; ?> $<?= $strtocamel($entity); ?> */
+        /** @var ?<?= $entity; ?> $<?= $strtocamel($entity); ?> */
         $<?= $strtocamel($entity); ?> = $this->repository->findOneBy(['id' => $<?= $strtocamel($entity); ?>Id->asString()]);
 
         if (null === $<?= $strtocamel($entity); ?>) {

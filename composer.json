@@ -20,8 +20,8 @@
         "symfony/maker-bundle": "^1.21"
     },
     "require-dev": {
-        "php": ">=7.4",
-        "becklyn/ddd-core": "^1.0",
+        "php": ">=8.0",
+        "becklyn/ddd-core": "^2.0",
         "doctrine/orm": "^2.8",
         "phpspec/prophecy": "^1.12",
         "phpunit/phpunit": "^9.5",

@@ -6,34 +6,24 @@ use Becklyn\Ddd\Events\Domain\EventProvider;
 use Becklyn\Ddd\Events\Domain\EventProviderCapabilities;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="wissen_knoten")
- */
+#[Orm\Entity]
+#[Orm\Table(name: "wissen_knoten")]
 class Knoten implements EventProvider
 {
     use EventProviderCapabilities;
 
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer", name="id", options={"unsigned":true})
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(name: "id", type: "integer", options: ["unsigned" => true])]
     private ?int $internalId = null;
 
-    /**
-     * @ORM\Column(type="string", unique=true, length=36, nullable=false, name="uuid")
-     */
+    #[ORM\Column(name: "uuid", type: "string", length: 36, unique: true, nullable: false)]
     private string $id;
 
-    /**
-     * @ORM\Column(type="datetime_immutable", nullable=false, columnDefinition="DATETIME(6) NOT NULL COMMENT '(DC2Type:datetime_immutable)' DEFAULT CURRENT_TIMESTAMP(6)")
-     */
+    #[ORM\Column(type: "datetime_immutable", nullable: false, columnDefinition: "DATETIME(6) NOT NULL COMMENT '(DC2Type:datetime_immutable)' DEFAULT CURRENT_TIMESTAMP(6)")]
     private \DateTimeImmutable $createdTs;
 
-    /**
-     * @ORM\Column(type="datetime_immutable", nullable=false, columnDefinition="DATETIME(6) NOT NULL COMMENT '(DC2Type:datetime_immutable)' DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)")
-     */
+    #[ORM\Column(type: "datetime_immutable", nullable: false, columnDefinition: "DATETIME(6) NOT NULL COMMENT '(DC2Type:datetime_immutable)' DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)")]
     private \DateTimeImmutable $updatedTs;
 
     public static function erzeugen(
@@ -41,7 +31,7 @@ class Knoten implements EventProvider
     ): self {
         // TODO add additional properties
 
-        $knoten = new static($id);
+        $knoten = new self($id);
         $knoten->raiseEvent(
             new KnotenErzeugt(
                 $knoten->nextEventIdentity(),

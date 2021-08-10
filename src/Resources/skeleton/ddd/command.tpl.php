@@ -11,14 +11,10 @@ use <?= $psr4Root; ?>\<?= $domain; ?>\Domain\<?= $domain_namespace; ?><?= $entit
  */
 class <?= $class_name; ?><?= "\n"; ?>
 {
-    private <?= $entity; ?>Id $<?= \strtolower($entity); ?>Id;
-
-    public function __construct (<?= $entity; ?>Id $<?= \strtolower($entity); ?>Id)
-    {
-        $this-><?= \strtolower($entity); ?>Id = $<?= \strtolower($entity); ?>Id;
-
+    public function __construct (
+        private <?= $entity; ?>Id $<?= \strtolower($entity); ?>Id,
         // TODO add additional properties to <?= $class_name; ?>::__construct
-    }
+    ) {}
 
     public function <?= \strtolower($entity); ?>Id () : <?= $entity; ?>Id
     {

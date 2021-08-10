@@ -29,7 +29,7 @@ class MakeCommand extends DddEntityCommandMaker
     {
         // should be named ${ActionName}${EntityName}Command in english
         // else ${EntityName}${ActionName}Command
-        if ($variables["domain_language"] == "en") {
+        if ("en" === $this->getDomainLanguage($variables["domain"])) {
             return "Command";
         }
         return $variables["extra"]["command_action"] . "Command";
@@ -43,7 +43,7 @@ class MakeCommand extends DddEntityCommandMaker
     {
         // should be named ${ActionName}${EntityName}Command in english
         // else ${EntityName}${ActionName}Command
-        if ($variables["domain_language"] == "en") {
+        if ("en" === $this->getDomainLanguage($variables["domain"])) {
             return $variables["extra"]["command_action"];
         }
         return "";
