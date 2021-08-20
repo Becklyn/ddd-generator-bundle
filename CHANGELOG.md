@@ -1,3 +1,7 @@
+# 2.0.2
+
+*   (bug) Fix casing bug with generated code
+
 # 2.0.1
 
 *   (bug) Entity test traits are now generated without one of the test methods having broken syntax
