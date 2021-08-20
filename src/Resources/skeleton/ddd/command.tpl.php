@@ -11,17 +11,17 @@ use <?= $psr4Root; ?>\<?= $domain; ?>\Domain\<?= $domain_namespace; ?><?= $entit
  */
 class <?= $class_name; ?><?= "\n"; ?>
 {
-    private <?= $entity; ?>Id $<?= \strtolower($entity); ?>Id;
+    private <?= $entity; ?>Id $<?= $strtocamel($entity); ?>Id;
 
-    public function __construct (<?= $entity; ?>Id $<?= \strtolower($entity); ?>Id)
+    public function __construct (<?= $entity; ?>Id $<?= $strtocamel($entity); ?>Id)
     {
-        $this-><?= \strtolower($entity); ?>Id = $<?= \strtolower($entity); ?>Id;
+        $this-><?= $strtocamel($entity); ?>Id = $<?= $strtocamel($entity); ?>Id;
 
         // TODO add additional properties to <?= $class_name; ?>::__construct
     }
 
-    public function <?= \strtolower($entity); ?>Id () : <?= $entity; ?>Id
+    public function <?= $strtocamel($entity); ?>Id () : <?= $entity; ?>Id
     {
-        return $this-><?= \strtolower($entity); ?>Id;
+        return $this-><?= $strtocamel($entity); ?>Id;
     }
 }
