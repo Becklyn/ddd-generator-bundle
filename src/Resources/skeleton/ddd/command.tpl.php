@@ -12,12 +12,12 @@ use <?= $psr4Root; ?>\<?= $domain; ?>\Domain\<?= $domain_namespace; ?><?= $entit
 class <?= $class_name; ?><?= "\n"; ?>
 {
     public function __construct (
-        private <?= $entity; ?>Id $<?= \strtolower($entity); ?>Id,
+        private <?= $entity; ?>Id $<?= $strtocamel($entity); ?>Id,
         // TODO add additional properties to <?= $class_name; ?>::__construct
     ) {}
 
-    public function <?= \strtolower($entity); ?>Id () : <?= $entity; ?>Id
+    public function <?= $strtocamel($entity); ?>Id () : <?= $entity; ?>Id
     {
-        return $this-><?= \strtolower($entity); ?>Id;
+        return $this-><?= $strtocamel($entity); ?>Id;
     }
 }
