@@ -37,7 +37,7 @@ abstract class DddEntityCommandMaker extends DddEntityMaker
      */
     protected function getExtraVariables (InputInterface $input) : array
     {
-        $domain = $input->getOption('domain-name');
+        $domain = $input->getOption(parent::DOMAIN_NAME_OPTION_KEY);
         $entity = $input->getOption('entity-name');
         $actionName = new UnicodeString($input->getOption("command-action"));
         $actionName = $actionName->camel()->title()->toString();

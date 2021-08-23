@@ -31,8 +31,15 @@ class MakeDomain extends DddEntityMaker
     {
         $command
             ->setDescription($this->getDescription())
-            ->addOption("domain-name", "", InputOption::VALUE_REQUIRED, "The name of the domain")
+            ->addOption(parent::DOMAIN_NAME_OPTION_KEY, "", InputOption::VALUE_REQUIRED, "The name of the domain")
             ->addOption("language", "", InputOption::VALUE_REQUIRED, "The language of the domain");
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected function askToSelectDomain () : bool {
+        return false;
     }
 
     /**
@@ -41,7 +48,7 @@ class MakeDomain extends DddEntityMaker
     public function generate (InputInterface $input, ConsoleStyle $io, Generator $generator) : void
     {
         $normalizeInput = fn (string $string) => (new UnicodeString($string))->camel()->title(true)->toString();
-        $domain = $normalizeInput($input->getOption("domain-name"));
+        $domain = $normalizeInput($input->getOption(parent::DOMAIN_NAME_OPTION_KEY));
         $path = $this->kernel->getProjectDir() . "/src/{$domain}/domain_config.yaml";
 
         $variables = [
