@@ -45,7 +45,7 @@ abstract class DddEntityMaker extends DddMaker
      */
     protected function getRequiredOptions () : array
     {
-        return ["domain-name", "entity-name"];
+        return [parent::DOMAIN_NAME_OPTION_KEY, "entity-name"];
     }
 
     /**
@@ -56,7 +56,7 @@ abstract class DddEntityMaker extends DddMaker
         $command
             ->setDescription($this->getDescription())
             ->addOption(
-                "domain-name",
+                parent::DOMAIN_NAME_OPTION_KEY,
                 null,
                 InputOption::VALUE_REQUIRED,
                 "Which domain does the entity belong to?"
@@ -141,6 +141,13 @@ abstract class DddEntityMaker extends DddMaker
     protected function getExtraVariables (InputInterface $input) : array
     {
         return [];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected function askToSelectDomain () : bool {
+        return true;
     }
 
     /**
