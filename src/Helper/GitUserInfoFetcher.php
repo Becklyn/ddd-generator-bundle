@@ -45,7 +45,11 @@ final class GitUserInfoFetcher
         $composerFile = $kernel->getProjectDir() . "/composer.json";
         $composerFileContents = \json_decode(\file_get_contents($composerFile), true);
 
-        if (!isset($composerFileContents["name"])) return "";
+        if (!isset($composerFileContents["name"]))
+        {
+            return "";
+        }
+
         $packageName = $composerFileContents["name"];
 
         $email = \shell_exec(self::FETCH_EMAIL_COMMAND) ?? $packageName;
