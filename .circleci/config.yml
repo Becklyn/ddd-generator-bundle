@@ -47,5 +47,4 @@ workflows:
     version: 2
     all:
         jobs:
-            -   php:
-                    context: Private Package Managers
+            -   php
