@@ -144,13 +144,6 @@ abstract class DddEntityMaker extends DddMaker
     }
 
     /**
-     * @inheritdoc
-     */
-    protected function askToSelectDomain () : bool {
-        return true;
-    }
-
-    /**
      * Returns the prefix that should be prepended to the entity name.
      * The return value is used to generate the file name of the class
      *
