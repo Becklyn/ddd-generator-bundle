@@ -1,3 +1,7 @@
+# 2.1.0
+
+*   (feature) Commands now ask to select correct Domain from a list
+
 # 2.0.2
 
 *   (bug) Fix casing bug with generated code

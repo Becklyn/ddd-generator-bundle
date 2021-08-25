@@ -15,7 +15,7 @@ abstract class MultiClassMaker extends DddEntityMaker
 {
     public function generate (InputInterface $input, ConsoleStyle $io, Generator $generator) : void
     {
-        $domain = $input->getOption("domain-name");
+        $domain = $input->getOption(parent::DOMAIN_NAME_OPTION_KEY);
 
         if (!$this->isDomainConfigured($domain))
         {

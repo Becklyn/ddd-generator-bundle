@@ -11,6 +11,8 @@ use Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Question\ChoiceQuestion;
+use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\String\UnicodeString;
 use Symfony\Component\Yaml\Yaml;
@@ -25,6 +27,7 @@ use Symfony\Component\Yaml\Yaml;
  */
 abstract class DddMaker extends AbstractMaker
 {
+    protected const DOMAIN_NAME_OPTION_KEY = "domain-name";
     public function __construct (protected KernelInterface $kernel)
     {}
 
@@ -34,6 +37,11 @@ abstract class DddMaker extends AbstractMaker
     public static function getCommandName () : string
     {
         return "ddd:" . self::getKey();
+    }
+
+    public static function getCommandDescription () : string
+    {
+        return 'Generates some classes for DDD pattern';
     }
 
     /**
@@ -56,7 +64,15 @@ abstract class DddMaker extends AbstractMaker
             if (!$this->hasDefinedOption($option->getName(), $input) && $option->isValueRequired())
             {
                 $input->setInteractive(true);
-                $value = $io->ask($option->getDescription(), $option->getDefault());
+
+                if (self::DOMAIN_NAME_OPTION_KEY === $option->getName() && $this->askToSelectDomain() && !empty($this->getAllDomains())) {
+                    $value = $io->askQuestion(new ChoiceQuestion($option->getDescription(), $this->getAllDomains()));
+                }
+                else
+                {
+                    $value = $io->ask($option->getDescription(), $option->getDefault());
+                }
+
                 $input->setOption($option->getName(), $value);
             }
         }
@@ -132,6 +148,36 @@ abstract class DddMaker extends AbstractMaker
     {
         $locator = new FileLocator($this->kernel->getProjectDir() . "/src/{$domain}");
         return $locator->locate("domain_config.yaml");
+    }
+
+    /**
+     * Returns the locations of all domain configuration file.
+     *
+     * @throws FileLocatorFileNotFoundException If the file cannot be found
+     */
+    protected function getAllDomains () : array
+    {
+        $domains = [];
+        $finder = (new Finder())
+            ->in('src/')
+            ->name('domain_config.yaml');
+
+        foreach ($finder->getIterator() as $item)
+        {
+            $domain = \explode("/", "{$item}")[1];
+            $domains[] = $domain;
+        }
+
+        return $domains;
+    }
+
+
+    /**
+     * If this method returns true the command will ask the user to select a domain from a list of domains.
+     * If this method returns false the command will ask the user to provide the name of the domain as a string.
+     */
+    protected function askToSelectDomain () : bool {
+        return true;
     }
 
     /**
