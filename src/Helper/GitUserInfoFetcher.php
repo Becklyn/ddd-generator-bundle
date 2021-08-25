@@ -36,13 +36,17 @@ final class GitUserInfoFetcher
     /**
      * Fetches the users email from git.
      * If the email can not be fetched it will fallback to the composer package name.
+     * In case the package name can also not be fetched it will simply return the empty string
      *
      * @internal
      */
     public function getUserEmail (KernelInterface $kernel) : string
     {
         $composerFile = $kernel->getProjectDir() . "/composer.json";
-        $packageName = \json_decode(\file_get_contents($composerFile), true)["name"];
+        $composerFileContents = \json_decode(\file_get_contents($composerFile), true);
+
+        if (!isset($composerFileContents["name"])) return "";
+        $packageName = $composerFileContents["name"];
 
         $email = \shell_exec(self::FETCH_EMAIL_COMMAND) ?? $packageName;
         return \str_replace(\PHP_EOL, "", $email);
