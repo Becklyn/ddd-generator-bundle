@@ -3,6 +3,8 @@
 namespace Becklyn\DddGeneratorBundle\Helper;
 
 use Symfony\Component\HttpKernel\KernelInterface;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
 
 /**
  * A Helper class that fetches information about the current git user using the command line.
@@ -18,8 +20,8 @@ use Symfony\Component\HttpKernel\KernelInterface;
  */
 final class GitUserInfoFetcher
 {
-    private const FETCH_NAME_COMMAND = "git config user.name";
-    private const FETCH_EMAIL_COMMAND = "git config user.email";
+    private const FETCH_NAME_COMMAND = ["git", "config", "user.name"];
+    private const FETCH_EMAIL_COMMAND = ["git", "config", "user.email"];
 
     /**
      * Fetches the users name from git.
@@ -29,8 +31,17 @@ final class GitUserInfoFetcher
      */
     public function getUserName () : string
     {
-        $username = \shell_exec(self::FETCH_NAME_COMMAND) ?? "Code Generator";
-        return \str_replace(\PHP_EOL, "", $username);
+        $process = new Process(self::FETCH_NAME_COMMAND);
+
+        try {
+            $process->mustRun();
+            $process->wait();
+
+            $gitUserName = $process->getOutput();
+            return \str_replace("\n", "", $gitUserName);
+        } catch (ProcessFailedException $exception) {
+            return "Code Generator";
+        }
     }
 
     /**
@@ -43,7 +54,7 @@ final class GitUserInfoFetcher
     public function getUserEmail (KernelInterface $kernel) : string
     {
         $composerFile = $kernel->getProjectDir() . "/composer.json";
-        $composerFileContents = \json_decode(\file_get_contents($composerFile), true);
+        $composerFileContents = \json_decode(\file_get_contents($composerFile), true, 521, \JSON_THROW_ON_ERROR);
 
         if (!isset($composerFileContents["name"]))
         {
@@ -52,7 +63,16 @@ final class GitUserInfoFetcher
 
         $packageName = $composerFileContents["name"];
 
-        $email = \shell_exec(self::FETCH_EMAIL_COMMAND) ?? $packageName;
-        return \str_replace(\PHP_EOL, "", $email);
+        $process = new Process(self::FETCH_EMAIL_COMMAND);
+
+        try {
+            $process->mustRun();
+            $process->wait();
+
+            $email = $process->getOutput();
+            return \str_replace("\n", "", $email);
+        } catch (ProcessFailedException $exception) {
+            return $packageName;
+        }
     }
 }
