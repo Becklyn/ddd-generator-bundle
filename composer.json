@@ -17,7 +17,8 @@
     ],
     "require": {
         "ext-json": "*",
-        "symfony/maker-bundle": "^1.21"
+        "symfony/maker-bundle": "^1.21",
+        "symfony/process": "^5.1"
     },
     "require-dev": {
         "php": ">=8.0",
