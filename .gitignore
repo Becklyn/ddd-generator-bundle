@@ -52,4 +52,4 @@
 /.web-server-pid
 
 # This is a library therefor we dont lock out dependencies
-composer.lock
+**/composer.lock
