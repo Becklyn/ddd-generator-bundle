@@ -28,6 +28,7 @@ use Symfony\Component\Yaml\Yaml;
 abstract class DddMaker extends AbstractMaker
 {
     protected KernelInterface $kernel;
+
     protected const DOMAIN_NAME_OPTION_KEY = "domain-name";
 
     public function __construct (KernelInterface $kernel)
@@ -180,7 +181,8 @@ abstract class DddMaker extends AbstractMaker
      * If this method returns true the command will ask the user to select a domain from a list of domains.
      * If this method returns false the command will ask the user to provide the name of the domain as a string.
      */
-    protected function askToSelectDomain () : bool {
+    protected function askToSelectDomain () : bool
+    {
         return true;
     }
 

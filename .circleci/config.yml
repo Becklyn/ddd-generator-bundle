@@ -38,7 +38,7 @@ jobs:
                     command: composer normalize --indent-size 4 --indent-style space --dry-run
             -   run:
                     name: PHP CS Fixer
-                    command: php vendor/bin/php-cs-fixer fix --diff --config vendor-bin/test/vendor/becklyn/php-cs/.php_cs.dist.php --dry-run --no-interaction
+                    command: php vendor/bin/php-cs-fixer fix --diff --config .php_cs.custom.php --dry-run --no-interaction
             -   run:
                     name: PHPUnit
                     command: ./vendor/bin/simple-phpunit -c phpunit.xml --colors=always --testdox
