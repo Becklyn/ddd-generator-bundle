@@ -2,7 +2,11 @@
 
 namespace Becklyn\DddGeneratorBundle\Helper;
 
+use Becklyn\DddGeneratorBundle\Exception\ComposerProjectNameNotReadableException;
+use Symfony\Bundle\MakerBundle\ConsoleStyle;
 use Symfony\Component\HttpKernel\KernelInterface;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
 
 /**
  * A Helper class that fetches information about the current git user using the command line.
@@ -18,8 +22,8 @@ use Symfony\Component\HttpKernel\KernelInterface;
  */
 final class GitUserInfoFetcher
 {
-    private const FETCH_NAME_COMMAND = "git config user.name";
-    private const FETCH_EMAIL_COMMAND = "git config user.email";
+    private const FETCH_NAME_COMMAND = ["git", "config", "user.name"];
+    private const FETCH_EMAIL_COMMAND = ["git", "config", "user.email"];
 
     /**
      * Fetches the users name from git.
@@ -29,26 +33,57 @@ final class GitUserInfoFetcher
      */
     public function getUserName () : string
     {
-        $username = \shell_exec(self::FETCH_NAME_COMMAND) ?? "Code Generator";
-        return \str_replace(\PHP_EOL, "", $username);
+        $process = new Process(self::FETCH_NAME_COMMAND);
+
+        try {
+            $process->mustRun();
+            $process->wait();
+
+            $gitUserName = $process->getOutput();
+            return \str_replace("\n", "", $gitUserName);
+        } catch (ProcessFailedException) {
+            return "Code Generator";
+        }
     }
 
     /**
      * Fetches the users email from git.
      * If the email can not be fetched it will fallback to the composer package name.
-     * In case the package name can also not be fetched it will simply return the empty string
+     * In case the package name can also not be fetched it will output an error message and terminate
      *
      * @internal
      */
-    public function getUserEmail (KernelInterface $kernel) : string
+    public function getUserEmail (KernelInterface $kernel, ConsoleStyle $io) : string
     {
         $composerFile = $kernel->getProjectDir() . "/composer.json";
-        $composerFileContents = \json_decode(\file_get_contents($composerFile), true);
-
-        if (!isset($composerFileContents["name"])) return "";
-        $packageName = $composerFileContents["name"];
-
-        $email = \shell_exec(self::FETCH_EMAIL_COMMAND) ?? $packageName;
-        return \str_replace(\PHP_EOL, "", $email);
+        $process = new Process(self::FETCH_EMAIL_COMMAND);
+        try
+        {
+            $process->mustRun();
+            $process->wait();
+            $email = $process->getOutput();
+            return \str_replace("\n", "", $email);
+        }
+        catch (ProcessFailedException)
+        {
+            try
+            {
+                $composerFileContents = \json_decode(
+                    \file_get_contents($composerFile),
+                    true,
+                    521,
+                    \JSON_THROW_ON_ERROR
+                );
+                if (!isset($composerFileContents["name"]))
+                {
+                    throw new ComposerProjectNameNotReadableException();
+                }
+                return $composerFileContents["name"];
+            }
+            catch (\JsonException | ComposerProjectNameNotReadableException) {
+                $io->error(["Cannot read \"name\" of project from composer.json.", "Terminating..."]);
+                die(1);
+            }
+        }
     }
 }
