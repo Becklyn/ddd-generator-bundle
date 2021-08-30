@@ -2,6 +2,8 @@
 
 namespace Becklyn\DddGeneratorBundle\Helper;
 
+use Becklyn\DddGeneratorBundle\Exception\ComposerProjectNameNotReadableException;
+use Symfony\Bundle\MakerBundle\ConsoleStyle;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
@@ -47,32 +49,42 @@ final class GitUserInfoFetcher
     /**
      * Fetches the users email from git.
      * If the email can not be fetched it will fallback to the composer package name.
-     * In case the package name can also not be fetched it will simply return the empty string
+     * In case the package name can also not be fetched it will output an error message and terminate
      *
      * @internal
      */
-    public function getUserEmail (KernelInterface $kernel) : string
+    public function getUserEmail (KernelInterface $kernel, ConsoleStyle $io) : string
     {
         $composerFile = $kernel->getProjectDir() . "/composer.json";
-        $composerFileContents = \json_decode(\file_get_contents($composerFile), true, 521, \JSON_THROW_ON_ERROR);
-
-        if (!isset($composerFileContents["name"]))
-        {
-            return "";
-        }
-
-        $packageName = $composerFileContents["name"];
-
         $process = new Process(self::FETCH_EMAIL_COMMAND);
-
-        try {
+        try
+        {
             $process->mustRun();
             $process->wait();
 
             $email = $process->getOutput();
             return \str_replace("\n", "", $email);
-        } catch (ProcessFailedException $exception) {
-            return $packageName;
+        }
+        catch (ProcessFailedException $ex)
+        {
+            try
+            {
+                $composerFileContents = \json_decode(
+                    \file_get_contents($composerFile),
+                    true,
+                    521,
+                    \JSON_THROW_ON_ERROR
+                );
+                if (!isset($composerFileContents["name"]))
+                {
+                    throw new ComposerProjectNameNotReadableException();
+                }
+                return $composerFileContents["name"];
+            }
+            catch (\JsonException | ComposerProjectNameNotReadableException $exception) {
+                $io->error(["Cannot read \"name\" of project from composer.json.", "Terminating..."]);
+                die(1);
+            }
         }
     }
 }
