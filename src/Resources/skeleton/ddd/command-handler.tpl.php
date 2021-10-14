@@ -2,6 +2,7 @@
 
 namespace <?= $namespace; ?>;
 
+use <?= $psr4Root; ?>\<?= $domain; ?>\Domain\<?= $domain_namespace; ?><?= $entity; ?>Repository;
 use Becklyn\Ddd\Commands\Application\CommandHandler;
 use Becklyn\Ddd\Events\Domain\EventProvider;
 
