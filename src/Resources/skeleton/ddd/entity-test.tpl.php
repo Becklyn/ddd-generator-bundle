@@ -24,7 +24,7 @@ class <?= $class_name; ?> extends TestCase
         $id = $this-><?= $i18n["test"]["_given"]; ?><?= $entity; ?>Id();
         // TODO implement additional properties
 
-        $<?= $strtocamel($entity); ?> = <?= $entity; ?>::<?= $i18n["_create"]; ?>($id);
+        $<?= $strtocamel($entity); ?> = $this-><?= $i18n["test"]["_given"]; ?><?= $entity; ?><?= $i18n["test"]["is_created"]; ?>($id);
 
         $this->assertTrue($id->equals($<?= $strtocamel($entity); ?>->id()));
         // TODO implement asserts for additional properties which have getters
@@ -35,7 +35,7 @@ class <?= $class_name; ?> extends TestCase
         $id = $this-><?= $i18n["test"]["_given"]; ?><?= $entity; ?>Id();
         // TODO implement additional properties
 
-        $<?= $strtocamel($entity); ?> = <?= $entity; ?>::<?= $i18n["_create"]; ?>($id);
+        $<?= $strtocamel($entity); ?> = $this-><?= $i18n["test"]["_given"]; ?><?= $entity; ?><?= $i18n["test"]["is_created"]; ?>($id);
 
         $events = $<?= $strtocamel($entity); ?>->dequeueEvents();
         $this->assertCount(1, $events);
