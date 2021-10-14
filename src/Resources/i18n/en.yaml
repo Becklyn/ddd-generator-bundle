@@ -25,6 +25,7 @@ test:
     if: If
     in: In
     instead_of: InsteadOf
+    is_created: IsCreated
     matches: Matches
     persists: Persists
     raises: Raises
