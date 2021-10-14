@@ -4,8 +4,7 @@ namespace <?= $namespace; ?>;
 
 use <?= $psr4Root; ?>\Tests\<?= $domain; ?>\Domain\<?= $domain_namespace; ?><?= $entity; ?>TestTrait;
 use <?= $psr4Root; ?>\<?= $domain; ?>\Application\<?= $domain_namespace; ?><?= $extra["command_namespace"]; ?>\<?= $extra["command_namespace"]; ?>Handler;
-use Becklyn\Ddd\Events\Testing\DomainEventTestTrait;
-use Becklyn\Ddd\Transactions\Testing\TransactionManagerTestTrait;
+use Becklyn\Ddd\Commands\Testing\CommandHandlerTestTrait;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 
@@ -21,21 +20,19 @@ class <?= $class_name; ?> extends TestCase
 {
     use ProphecyTrait;
     use <?= $entity; ?>TestTrait;
-    use TransactionManagerTestTrait;
-    use DomainEventTestTrait;
+    use CommandHandlerTestTrait;
 
-    private <?= $extra["command_namespace"]; ?>Handler $fixture;
+    /** @var <?= $extra["command_namespace"]; ?>Handler $fixture */
+    protected $fixture;
 
     protected function setUp () : void
     {
         $this->init<?= $entity; ?>TestTrait();
-        $this->initTransactionManagerTestTrait();
-        $this->initDomainEventTestTrait();
+        $this->initCommandHandlerTestTrait();
 
         // TODO inject dependencies
         $this->fixture = new <?= $extra["command_namespace"]; ?>Handler();
-        $this->fixture->setTransactionManager($this->transactionManager->reveal());
-        $this->fixture->setEventRegistry($this->eventRegistry->reveal());
+        $this->commandHandlerPostSetUp();
     }
 
     // TODO implement test cases for <?= $class_name; ?><?= "\n"; ?>
