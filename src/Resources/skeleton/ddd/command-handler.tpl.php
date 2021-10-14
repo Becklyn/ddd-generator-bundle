@@ -13,6 +13,8 @@ use Becklyn\Ddd\Events\Domain\EventProvider;
 class <?= $class_name; ?> extends CommandHandler
 {
     public function __construct (
+        private <?= $entity; ?>Repository $<?= $strtocamel($entity); ?>Repository,
+
         // TODO inject dependencies into <?= $class_name; ?>::__construct
     ) {}
 
@@ -26,6 +28,10 @@ class <?= $class_name; ?> extends CommandHandler
      */
     protected function execute ($command) : ?EventProvider
     {
+        $<?= $strtocamel($entity); ?> = $this-><?= $strtocamel($entity); ?>Repository->findOneById($command-><?= $strtocamel($entity); ?>Id());
+
         // TODO implement <?= $class_name; ?>::execute
+
+        return $<?= $strtocamel($entity); ?>;
     }
 }
