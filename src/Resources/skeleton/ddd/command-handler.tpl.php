@@ -13,11 +13,15 @@ use Becklyn\Ddd\Events\Domain\EventProvider;
  */
 class <?= $class_name; ?> extends CommandHandler
 {
+    private <?= $entity; ?>Repository $<?= $strtocamel($entity); ?>Repository;
+
     public function __construct (
-        private <?= $entity; ?>Repository $<?= $strtocamel($entity); ?>Repository,
+        <?= $entity; ?>Repository $<?= $strtocamel($entity); ?>Repository
+    ) {
+        $this->$<?= $strtocamel($entity); ?>Repository = $<?= $strtocamel($entity); ?>Repository;
 
         // TODO inject dependencies into <?= $class_name; ?>::__construct
-    ) {}
+    }
 
     public function handle (<?= $extra["command_namespace"]; ?>Command $command) : void
     {
