@@ -25,6 +25,7 @@ test:
     if: Wenn
     in: In
     instead_of: Statt
+    is_created: Exisitiert
     matches: IstIdentischMit
     persists: Persistiert
     raises: Erzeugt

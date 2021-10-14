@@ -51,4 +51,14 @@ trait <?= $class_name; ?><?= "\n"; ?>
     {
         $this-><?= $strtocamel($entity); ?>Repository->findOneById($<?= $strtocamel($entity); ?>Id)->willThrow(new <?= $entity; ?><?= $i18n["not_found"]; ?>Exception());
     }
+
+    protected function <?= $i18n["test"]["_given"]; ?><?= $entity; ?><?= $i18n["test"]["is_created"]; ?> (
+        ?<?= $entity; ?>Id $<?= $strtocamel($entity); ?>Id = null
+        // TODO add additional properties
+    ) : <?= $entity; ?> {
+        return <?= $entity; ?>::create(
+            $<?= $strtocamel($entity); ?>Id ?? $this-><?= $i18n["test"]["_given"]; ?><?= $entity; ?>Id(),
+            // TODO add additional properties
+        );
+    }
 }
