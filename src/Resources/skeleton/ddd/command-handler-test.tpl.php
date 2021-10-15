@@ -49,7 +49,7 @@ class <?= $class_name; ?> extends TestCase
         $this-><?= $i18n["test"]["_when"]; ?><?= $extra["command_namespace"]; ?><?= $i18n["test"]["is_handled"]; ?>($<?= $strtocamel($entity); ?>Id /** TODO additional command params **/);
     }
 
-    private function then_SOMETHING_ShouldBe_ACTIONED_(ObjectProphecy | <?= $entity; ?> $<?= $strtocamel($entity); ?> /** TODO additional params **/) : void
+    private function <?= $i18n["test"]["_then"]; ?>_SOMETHING_<?= $i18n["test"]["should"]; ?>_ACTIONED_(ObjectProphecy | <?= $entity; ?> $<?= $strtocamel($entity); ?> /** TODO additional params **/) : void
     {
         $<?= $strtocamel($entity); ?>->_DO_ACTION_(/** TODO add params **/)->shouldBeCalled();
     }
