@@ -54,7 +54,7 @@ class <?= $class_name; ?> extends TestCase
         $<?= $strtocamel($entity); ?>->_DO_ACTION_(/** TODO add params **/)->shouldBeCalled();
     }
 
-    private function when<?= $extra["command_namespace"]; ?>IsHandled(<?= $entity; ?>Id $<?= $strtocamel($entity); ?>Id /** TODO additional command params **/) : void
+    private function <?= $i18n["test"]["_when"]; ?><?= $extra["command_namespace"]; ?><?= $i18n["test"]["is_handled"]; ?>(<?= $entity; ?>Id $<?= $strtocamel($entity); ?>Id /** TODO additional command params **/) : void
     {
         $this->fixture->handle(new <?= $extra["command_namespace"]; ?>($<?= $strtocamel($entity); ?>Id /** TODO additional command params **/));
     }
