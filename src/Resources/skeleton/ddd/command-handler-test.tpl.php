@@ -39,14 +39,14 @@ class <?= $class_name; ?> extends TestCase
         $this->commandHandlerPostSetUp();
     }
 
-    public function test_TESTED_LOGIC_Is_ACTIONED_And<?= $entity; ?>IsDequeuedByEventRegistry() : void
+    public function test_TESTED_LOGIC_IS_ACTIONED_<?= $i18n["test"]["and"]; ?><?= $entity; ?><?= $i18n["test"]["is"]; ?><?= $i18n["test"]["dequeued_by_event_registry"]; ?>() : void
     {
-        $<?= $strtocamel($entity); ?>Id = $this->given<?= $entity; ?>Id();
+        $<?= $strtocamel($entity); ?>Id = $this-><?= $i18n["test"]["_given"]; ?><?= $entity; ?>Id();
         // TODO add additional command params
-        $<?= $strtocamel($entity); ?> = $this->given<?= $entity; ?>CanBeFoundById($<?= $strtocamel($entity); ?>Id);
-        $this->then_SOMETHING_ShouldBe_ACTIONED_($<?= $strtocamel($entity); ?> /** TODO additional params **/);
-        $this->then<?= $entity; ?>ShouldBeDequeuedByEventRegistry($<?= $strtocamel($entity); ?>->reveal());
-        $this->when<?= $extra["command_namespace"]; ?>IsHandled($<?= $strtocamel($entity); ?>Id /** TODO additional command params **/);
+        $<?= $strtocamel($entity); ?> = $this-><?= $i18n["test"]["_given"]; ?>?= $entity; ?><?= $i18n["test"]["can_be_found_by_id"]; ?>($<?= $strtocamel($entity); ?>Id);
+        $this-><?= $i18n["test"]["_then"]; ?>_SOMETHING_<?= $i18n["test"]["should"]; ?>_ACTIONED_($<?= $strtocamel($entity); ?> /** TODO additional params **/);
+        $this-><?= $i18n["test"]["_then"]; ?><?= $entity; ?><?= $i18n["test"]["should"]; ?><?= $i18n["test"]["dequeued_by_event_registry"]; ?>($<?= $strtocamel($entity); ?>->reveal());
+        $this-><?= $i18n["test"]["_when"]; ?><?= $extra["command_namespace"]; ?><?= $i18n["test"]["is_handled"]; ?>($<?= $strtocamel($entity); ?>Id /** TODO additional command params **/);
     }
 
     private function then_SOMETHING_ShouldBe_ACTIONED_(ObjectProphecy | <?= $entity; ?> $<?= $strtocamel($entity); ?> /** TODO additional params **/) : void
