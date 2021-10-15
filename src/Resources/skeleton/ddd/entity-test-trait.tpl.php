@@ -65,7 +65,7 @@ trait <?= $class_name; ?><?= "\n"; ?>
     }
 
     protected function <?= $i18n["test"]["_given"]; ?><?= $entity; ?><?= $i18n["test"]["is_created"]; ?> (
-        ?<?= $entity; ?>Id $<?= $strtocamel($entity); ?>Id = null
+        ?<?= $entity; ?>Id $<?= $strtocamel($entity); ?>Id = null,
         // TODO add additional properties
     ) : <?= $entity; ?> {
         return <?= $entity; ?>::create(
