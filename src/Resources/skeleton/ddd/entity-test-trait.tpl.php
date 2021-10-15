@@ -62,7 +62,7 @@ trait <?= $class_name; ?><?= "\n"; ?>
         );
     }
 
-    protected function <?= $i18n["test"]["_then"] ?><?= $entity; ?><?= $i18n["test"]["should"]; ?><?= $i18n["test"]["dequeued_by_event_registry"]; ?><?= $i18n["test"]["dequeued_by_event_registry_suffix"] ?>($<?= $strtocamel($entity); ?>) : void
+    protected function <?= $i18n["test"]["_then"] ?><?= $entity; ?><?= $i18n["test"]["should"]; ?><?= $i18n["test"]["dequeued_by_event_registry"]; ?><?= $i18n["test"]["dequeued_by_event_registry_suffix"] ?> ($<?= $strtocamel($entity); ?>) : void
     {
         $this->thenEventRegistryShouldDequeueAndRegister($<?= $strtocamel($entity); ?>);
     }
