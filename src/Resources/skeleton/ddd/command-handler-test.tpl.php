@@ -34,7 +34,7 @@ class <?= $class_name; ?> extends TestCase
 
         // TODO inject dependencies
         $this->fixture = new <?= $extra["command_namespace"]; ?>Handler(
-            $this-><?= $strtocamel($entity); ?>Repository->reveal()
+            $this-><?= $strtocamel($entity); ?>Repository->reveal(),
         );
         $this->commandHandlerPostSetUp();
     }
@@ -44,19 +44,19 @@ class <?= $class_name; ?> extends TestCase
         $<?= $strtocamel($entity); ?>Id = $this-><?= $i18n["test"]["_given"]; ?><?= $entity; ?>Id();
         // TODO add additional command params
         $<?= $strtocamel($entity); ?> = $this-><?= $i18n["test"]["_given"]; ?><?= $entity; ?><?= $i18n["test"]["can_be_found_by_id"]; ?>($<?= $strtocamel($entity); ?>Id);
-        $this-><?= $i18n["test"]["_then"]; ?>_SOMETHING_<?= $i18n["test"]["should"]; ?>_ACTIONED_($<?= $strtocamel($entity); ?> /** TODO additional params **/);
+        $this-><?= $i18n["test"]["_then"]; ?>_SOMETHING_<?= $i18n["test"]["should"]; ?>_ACTIONED_($<?= $strtocamel($entity); ?>, /** TODO additional params **/);
         $this-><?= $i18n["test"]["_then"]; ?><?= $entity; ?><?= $i18n["test"]["should"]; ?><?= $i18n["test"]["dequeued_by_event_registry"]; ?><?= $i18n["test"]["dequeued_by_event_registry_suffix"] ?>($<?= $strtocamel($entity); ?>->reveal());
-        $this-><?= $i18n["test"]["_when"]; ?><?= $extra["command_namespace"]; ?><?= $i18n["test"]["is_handled"]; ?>($<?= $strtocamel($entity); ?>Id /** TODO additional command params **/);
+        $this-><?= $i18n["test"]["_when"]; ?><?= $extra["command_namespace"]; ?><?= $i18n["test"]["is_handled"]; ?>($<?= $strtocamel($entity); ?>Id, /** TODO additional command params **/);
     }
 
-    private function <?= $i18n["test"]["_then"]; ?>_SOMETHING_<?= $i18n["test"]["should"]; ?>_ACTIONED_ (ObjectProphecy | <?= $entity; ?> $<?= $strtocamel($entity); ?> /** TODO additional params **/) : void
+    private function <?= $i18n["test"]["_then"]; ?>_SOMETHING_<?= $i18n["test"]["should"]; ?>_ACTIONED_ (ObjectProphecy | <?= $entity; ?> $<?= $strtocamel($entity); ?>, /** TODO additional params **/) : void
     {
         $<?= $strtocamel($entity); ?>->_DO_ACTION_(/** TODO add params **/)->shouldBeCalled();
     }
 
-    private function <?= $i18n["test"]["_when"]; ?><?= $extra["command_namespace"]; ?><?= $i18n["test"]["is_handled"]; ?> (<?= $entity; ?>Id $<?= $strtocamel($entity); ?>Id /** TODO additional command params **/) : void
+    private function <?= $i18n["test"]["_when"]; ?><?= $extra["command_namespace"]; ?><?= $i18n["test"]["is_handled"]; ?> (<?= $entity; ?>Id $<?= $strtocamel($entity); ?>Id, /** TODO additional command params **/) : void
     {
-        $this->fixture->handle(new <?= $extra["command_namespace"]; ?>($<?= $strtocamel($entity); ?>Id /** TODO additional command params **/));
+        $this->fixture->handle(new <?= $extra["command_namespace"]; ?>($<?= $strtocamel($entity); ?>Id, /** TODO additional command params **/));
     }
 
     // TODO implement test cases for <?= $class_name; ?><?= "\n"; ?>
