@@ -21,6 +21,7 @@ test:
     can_be_found_by_id: KannDurchIdGefundenWerden
     cannot_be_found_by_id: KannDurchIdNichtGefundenWerden
     dequeued_by_event_registry: VonDerEventRegisitrierungAusDerWarteschlangeEntfernt
+    dequeued_by_event_registry_suffix: WordenSein
     finds: Findet
     from: Von
     for_given: Fuer
