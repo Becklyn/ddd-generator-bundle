@@ -20,8 +20,8 @@ test:
     by_id: DurchId
     can_be_found_by_id: KannDurchIdGefundenWerden
     cannot_be_found_by_id: KannDurchIdNichtGefundenWerden
-    dequeued_by_event_registry: VonDerEventRegisitrierungAusDerWarteschlangeEntfernt
-    dequeued_by_event_registry_suffix: WordenSein
+    dequeued_by_event_registry: VonDerEventRegistryDequeued
+    dequeued_by_event_registry_suffix: Wurde
     finds: Findet
     from: Von
     for_given: Fuer
