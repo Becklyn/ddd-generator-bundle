@@ -45,7 +45,7 @@ class <?= $class_name; ?> extends TestCase
         // TODO add additional command params
         $<?= $strtocamel($entity); ?> = $this-><?= $i18n["test"]["_given"]; ?><?= $entity; ?><?= $i18n["test"]["can_be_found_by_id"]; ?>($<?= $strtocamel($entity); ?>Id);
         $this-><?= $i18n["test"]["_then"]; ?>_SOMETHING_<?= $i18n["test"]["should"]; ?>_ACTIONED_($<?= $strtocamel($entity); ?> /** TODO additional params **/);
-        $this-><?= $i18n["test"]["_then"]; ?><?= $entity; ?><?= $i18n["test"]["should"]; ?><?= $i18n["test"]["dequeued_by_event_registry"]; ?>($<?= $strtocamel($entity); ?>->reveal());
+        $this-><?= $i18n["test"]["_then"]; ?><?= $entity; ?><?= $i18n["test"]["should"]; ?><?= $i18n["test"]["dequeued_by_event_registry"]; ?><?= $i18n["test"]["dequeued_by_event_registry_suffix"] ?>($<?= $strtocamel($entity); ?>->reveal());
         $this-><?= $i18n["test"]["_when"]; ?><?= $extra["command_namespace"]; ?><?= $i18n["test"]["is_handled"]; ?>($<?= $strtocamel($entity); ?>Id /** TODO additional command params **/);
     }
 
