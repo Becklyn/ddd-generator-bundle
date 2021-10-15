@@ -61,4 +61,9 @@ trait <?= $class_name; ?><?= "\n"; ?>
             // TODO add additional properties
         );
     }
+
+    protected function then<?= $entity; ?>ShouldBeDequeuedByEventRegistry($<?= $strtocamel($entity); ?>) : void
+    {
+        $this->thenEventRegistryShouldDequeueAndRegister($<?= $strtocamel($entity); ?>);
+    }
 }
