@@ -31,7 +31,7 @@ test:
     instead_of: InsteadOf
     is: Is
     is_created: IsCreated
-    is_handled: IsHandeled
+    is_handled: IsHandled
     matches: Matches
     persists: Persists
     raises: Raises
