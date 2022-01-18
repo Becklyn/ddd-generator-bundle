@@ -1,13 +1,13 @@
 {
     "name": "becklyn/ddd-generator-bundle",
-    "type": "symfony-bundle",
     "description": "Code generator for common Domain Driven Design patterns in the Becklyn DDD framework.",
+    "license": "MIT",
+    "type": "symfony-bundle",
     "keywords": [
         "ddd",
         "domain driven design",
         "code generation"
     ],
-    "license": "MIT",
     "authors": [
         {
             "name": "Pascal Gläßer",
@@ -18,7 +18,7 @@
     "require": {
         "ext-json": "*",
         "symfony/maker-bundle": "^1.21",
-        "symfony/process": "^5.1|^6.0"
+        "symfony/process": "^5.1 || ^6.0"
     },
     "require-dev": {
         "php": ">=8.0",
@@ -27,21 +27,21 @@
         "phpspec/prophecy": "^1.12",
         "phpunit/phpunit": "^9.5",
         "roave/security-advisories": "dev-master",
-        "symfony/config": "^5.1|^6.0",
-        "symfony/console": "^5.1|^6.0",
-        "symfony/dependency-injection": "^5.1|^6.0",
-        "symfony/filesystem": "^5.1|^6.0",
-        "symfony/finder": "^5.1|^6.0",
-        "symfony/phpunit-bridge": "^5.1|^6.0",
-        "symfony/yaml": "^5.1|^6.0"
-    },
-    "config": {
-        "sort-packages": true
+        "symfony/config": "^5.1 || ^6.0",
+        "symfony/console": "^5.1 || ^6.0",
+        "symfony/dependency-injection": "^5.1 || ^6.0",
+        "symfony/filesystem": "^5.1 || ^6.0",
+        "symfony/finder": "^5.1 || ^6.0",
+        "symfony/phpunit-bridge": "^5.1 || ^6.0",
+        "symfony/yaml": "^5.1 || ^6.0"
     },
     "autoload": {
         "psr-4": {
             "Becklyn\\DddGeneratorBundle\\": "src/"
         }
+    },
+    "config": {
+        "sort-packages": true
     },
     "scripts": {
         "auto-scripts": {}
