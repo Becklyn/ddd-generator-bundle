@@ -1,3 +1,7 @@
+2.2.1
+=====
+* (improvement) Added support for Symfony 6
+
 2.2.0
 =====
 * (improvement) Command handler tests now use the CommandHandlerTestTrait instead of TransactionManagerTestTrait and DomainEventTestTrait

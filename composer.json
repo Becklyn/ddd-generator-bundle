@@ -18,7 +18,7 @@
     "require": {
         "ext-json": "*",
         "symfony/maker-bundle": "^1.21",
-        "symfony/process": "^5.1"
+        "symfony/process": "^5.1|^6.0"
     },
     "require-dev": {
         "php": ">=8.0",
@@ -27,13 +27,13 @@
         "phpspec/prophecy": "^1.12",
         "phpunit/phpunit": "^9.5",
         "roave/security-advisories": "dev-master",
-        "symfony/config": "^5.1",
-        "symfony/console": "^5.1",
-        "symfony/dependency-injection": "^5.1",
-        "symfony/filesystem": "^5.1",
-        "symfony/finder": "^5.1",
-        "symfony/phpunit-bridge": "^5.1",
-        "symfony/yaml": "^5.1"
+        "symfony/config": "^5.1|^6.0",
+        "symfony/console": "^5.1|^6.0",
+        "symfony/dependency-injection": "^5.1|^6.0",
+        "symfony/filesystem": "^5.1|^6.0",
+        "symfony/finder": "^5.1|^6.0",
+        "symfony/phpunit-bridge": "^5.1|^6.0",
+        "symfony/yaml": "^5.1|^6.0"
     },
     "config": {
         "sort-packages": true
